@@ -1,0 +1,19 @@
+package rvm;
+
+import java.lang.RuntimeException;
+
+P32(Vector v) {
+	event p(Vector v) {}
+	event q(Vector v) {}
+	event r(Vector v) {}
+	event s(Vector v) {}
+	event t(Vector v) {}
+	event z(Vector v) {}
+
+	ltl: [](not q) or ((not q) U ((q and <>p) => ((not p) U ((s and (not p)) and o ((not p) U t)))))
+
+	@violation {
+	  __RESET;
+	  throw new RuntimeException("violation");
+	}
+}
