@@ -3,15 +3,16 @@ package tests;
 import java.util.*;
 import java.time.Duration;
 import java.time.Instant;
-import java.lang.reflect.Method;
 
 public final class PatternTests {
-    /* encoded input events */
+
+    /* encoded input events for rvsynth monitors */
     static int input[] = { 1, 2, 4, 8, 16, 32 };
 
     public static void main(String[] args) throws ClassNotFoundException {
 	Vector<Integer> v = new Vector<Integer>();
 	int nmax = 10000000; /* max length of the random trace */
+	int resets = 0; /* number of total resets */
 
 	Random rand = new Random();
 
@@ -50,6 +51,7 @@ public final class PatternTests {
 		}
 	    } catch (RuntimeException c) {
 		// System.out.println(counter + ",\tfalse");
+		resets ++;
 	    }
 	}
 
@@ -82,5 +84,6 @@ public final class PatternTests {
 
 	System.out.println("Time taken (rvm): " + timeElapsed.toMillis() + " milliseconds");
 	System.out.println("Time taken (rvs): " + timeElapsed2.toMillis() + " milliseconds");
+	System.out.println("Number of resets: " + resets);
     }
 }
