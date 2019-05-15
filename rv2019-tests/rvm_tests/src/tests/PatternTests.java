@@ -60,7 +60,7 @@ public final class PatternTests {
 
 	rvsynth.P52 monitor = new rvsynth.P52();
 	Enumeration<Integer> e2 = v.elements();
-	int reset = 0;
+	int reset = 0, resets2 = 0;
 	counter = 0;
 
 	start = Instant.now();
@@ -71,6 +71,7 @@ public final class PatternTests {
 
 	    if (1 /* hard */ == reset) {
 		reset = 0 /* none */;
+		resets2 ++;
 	    }
 
 	    if (2 /* false */ == out) {
@@ -84,6 +85,6 @@ public final class PatternTests {
 
 	System.out.println("Time taken (rvm): " + timeElapsed.toMillis() + " milliseconds");
 	System.out.println("Time taken (rvs): " + timeElapsed2.toMillis() + " milliseconds");
-	System.out.println("Number of resets: " + resets);
+	System.out.println("Number of resets: " + resets + ", " + resets2);
     }
 }
