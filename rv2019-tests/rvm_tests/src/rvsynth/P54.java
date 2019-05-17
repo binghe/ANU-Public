@@ -3,7 +3,7 @@ package rvsynth;
 public class P54 {
   int current_loc = 1;
 
-  public int /* output (0 = unknown, 1 = true, 2 = false, 3 = error) */
+  public int /* out (0 = unknown, 1 = true, 2 = false, 3 = out-of-model) */
     run (long state,
          int reset) /* in (0 = none, 1 = hard, 2 = soft) */
   {
@@ -22,332 +22,172 @@ public class P54 {
   {
     int output;
     switch (current_loc) {
-    case 21:
-      output = 0; /* unknown */
-      if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
-        output = 2; /* false */
-        current_loc = 19;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 21;
-      }
-      else if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 18;
-      }
-      else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 11;
-      }
-      else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 15;
-      }
-      else if (2L == input) /* (!p & (q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 20;
-      }
-      else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 9;
-      }
-      else {
-        output = 3; /* error */
-      }
-      break;
-    case 20:
-      output = 0; /* unknown */
-      if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
-        output = 2; /* false */
-        current_loc = 19;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 21;
-      }
-      else if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 18;
-      }
-      else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 11;
-      }
-      else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 15;
-      }
-      else if (2L == input) /* (!p & (q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 20;
-      }
-      else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 9;
-      }
-      else {
-        output = 3; /* error */
-      }
-      break;
-    case 19:
-      output = 2; /* false */
-      break;
-    case 18:
-      output = 0; /* unknown */
-      if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
-        output = 2; /* false */
-        current_loc = 19;
-      }
-      else if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 18;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 17;
-      }
-      else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 16;
-      }
-      else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 15;
-      }
-      else if (2L == input) /* (!p & (q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 14;
-      }
-      else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 9;
-      }
-      else {
-        output = 3; /* error */
-      }
-      break;
     case 17:
       output = 0; /* unknown */
       if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
         output = 2; /* false */
-        current_loc = 19;
+        current_loc = 16;
       }
       else if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 18;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 17;
+        current_loc = 15;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 16;
+        current_loc = 10;
       }
       else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 15;
+        current_loc = 13;
       }
       else if (2L == input) /* (!p & (q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 14;
+        current_loc = 17;
       }
       else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 9;
+        current_loc = 8;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 16:
-      output = 0; /* unknown */
-      if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
-        output = 2; /* false */
-        current_loc = 19;
-      }
-      else if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 18;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 17;
-      }
-      else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 16;
-      }
-      else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 15;
-      }
-      else if (2L == input) /* (!p & (q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 14;
-      }
-      else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 9;
-      }
-      else {
-        output = 3; /* error */
-      }
+      output = 2; /* false */
       break;
     case 15:
       output = 0; /* unknown */
       if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
         output = 2; /* false */
-        current_loc = 19;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 21;
+        current_loc = 16;
       }
       else if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 18;
+        current_loc = 15;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 11;
+        current_loc = 14;
       }
       else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 15;
+        current_loc = 13;
       }
       else if (2L == input) /* (!p & (q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 20;
+        current_loc = 12;
       }
       else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 9;
+        current_loc = 8;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 14:
       output = 0; /* unknown */
       if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
         output = 2; /* false */
-        current_loc = 19;
+        current_loc = 16;
       }
       else if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 18;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 17;
+        current_loc = 15;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 16;
+        current_loc = 14;
       }
       else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 15;
+        current_loc = 13;
       }
       else if (2L == input) /* (!p & (q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 14;
+        current_loc = 12;
       }
       else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 9;
+        current_loc = 8;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 13:
       output = 0; /* unknown */
-      if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 13;
+      if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
+        output = 2; /* false */
+        current_loc = 16;
       }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
+      else if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 12;
+        current_loc = 15;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 11;
+        current_loc = 10;
       }
       else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 10;
-      }
-      else if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 4;
+        current_loc = 13;
       }
       else if (2L == input) /* (!p & (q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 3;
+        current_loc = 17;
       }
       else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 9;
+        current_loc = 8;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 12:
       output = 0; /* unknown */
-      if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 13;
+      if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
+        output = 2; /* false */
+        current_loc = 16;
       }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
+      else if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 12;
+        current_loc = 15;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 11;
+        current_loc = 14;
       }
       else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 10;
-      }
-      else if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 4;
+        current_loc = 13;
       }
       else if (2L == input) /* (!p & (q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 3;
+        current_loc = 12;
       }
       else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 9;
+        current_loc = 8;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 11:
       output = 0; /* unknown */
       if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 13;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 12;
+        current_loc = 11;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 11;
+        current_loc = 10;
       }
       else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 10;
+        current_loc = 9;
       }
       else if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
@@ -359,29 +199,25 @@ public class P54 {
       }
       else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 9;
+        current_loc = 8;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 10:
       output = 0; /* unknown */
       if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 13;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 12;
+        current_loc = 11;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 11;
+        current_loc = 10;
       }
       else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 10;
+        current_loc = 9;
       }
       else if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
@@ -393,63 +229,25 @@ public class P54 {
       }
       else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 9;
+        current_loc = 8;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 9:
       output = 0; /* unknown */
-      if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
-        output = 2; /* false */
-        current_loc = 19;
-      }
-      else if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 18;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 17;
-      }
-      else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 16;
-      }
-      else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 15;
-      }
-      else if (2L == input) /* (!p & (q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 14;
-      }
-      else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 9;
-      }
-      else {
-        output = 3; /* error */
-      }
-      break;
-    case 8:
-      output = 0; /* unknown */
       if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 8;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 7;
+        current_loc = 11;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 6;
+        current_loc = 10;
       }
       else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 5;
+        current_loc = 9;
       }
       else if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
@@ -461,20 +259,46 @@ public class P54 {
       }
       else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 2;
+        current_loc = 8;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
+      }
+      break;
+    case 8:
+      output = 0; /* unknown */
+      if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
+        output = 2; /* false */
+        current_loc = 16;
+      }
+      else if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
+        output = 0; /* unknown */
+        current_loc = 15;
+      }
+      else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
+        output = 0; /* unknown */
+        current_loc = 14;
+      }
+      else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
+        output = 0; /* unknown */
+        current_loc = 13;
+      }
+      else if (2L == input) /* (!p & (q & (!r & (!s & (!t & !z))))) */ {
+        output = 0; /* unknown */
+        current_loc = 12;
+      }
+      else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
+        output = 0; /* unknown */
+        current_loc = 8;
+      }
+      else {
+        output = 3; /* out-of-model */
       }
       break;
     case 7:
       output = 0; /* unknown */
       if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 8;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
         current_loc = 7;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
@@ -498,17 +322,13 @@ public class P54 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 6:
       output = 0; /* unknown */
       if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 8;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
         current_loc = 7;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
@@ -532,17 +352,13 @@ public class P54 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 5:
       output = 0; /* unknown */
       if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 8;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
         current_loc = 7;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
@@ -566,17 +382,13 @@ public class P54 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 4:
       output = 0; /* unknown */
       if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 8;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
         current_loc = 7;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
@@ -600,26 +412,22 @@ public class P54 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 3:
       output = 0; /* unknown */
       if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 13;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
-        current_loc = 12;
+        current_loc = 11;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 11;
+        current_loc = 10;
       }
       else if (8L == input) /* (!p & (!q & (!r & (s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 10;
+        current_loc = 9;
       }
       else if (4L == input) /* (!p & (!q & (r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
@@ -631,20 +439,16 @@ public class P54 {
       }
       else if (1L == input) /* (p & (!q & (!r & (!s & (!t & !z))))) */ {
         output = 0; /* unknown */
-        current_loc = 9;
+        current_loc = 8;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 2:
       output = 0; /* unknown */
       if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 8;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
         current_loc = 7;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
@@ -668,17 +472,13 @@ public class P54 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 1:
       output = 0; /* unknown */
       if (32L == input) /* (!p & (!q & (!r & (!s & (!t & z))))) */ {
         output = 0; /* unknown */
-        current_loc = 8;
-      }
-      else if (0L == input) /* (!p & (!q & (!r & (!s & (!t & !z))))) */ {
-        output = 0; /* unknown */
         current_loc = 7;
       }
       else if (16L == input) /* (!p & (!q & (!r & (!s & (t & !z))))) */ {
@@ -702,7 +502,7 @@ public class P54 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     default:

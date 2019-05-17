@@ -3,7 +3,7 @@ package rvsynth;
 public class P38 {
   int current_loc = 1;
 
-  public int /* output (0 = unknown, 1 = true, 2 = false, 3 = error) */
+  public int /* out (0 = unknown, 1 = true, 2 = false, 3 = out-of-model) */
     run (long state,
          int reset) /* in (0 = none, 1 = hard, 2 = soft) */
   {
@@ -53,7 +53,7 @@ public class P38 {
         current_loc = 15;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 17:
@@ -83,7 +83,7 @@ public class P38 {
         current_loc = 15;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 16:
@@ -113,7 +113,7 @@ public class P38 {
         current_loc = 15;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 15:
@@ -143,7 +143,7 @@ public class P38 {
         current_loc = 15;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 14:
@@ -173,7 +173,7 @@ public class P38 {
         current_loc = 11;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 13:
@@ -203,7 +203,7 @@ public class P38 {
         current_loc = 15;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 12:
@@ -233,7 +233,7 @@ public class P38 {
         current_loc = 11;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 11:
@@ -263,7 +263,7 @@ public class P38 {
         current_loc = 11;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 10:
@@ -293,7 +293,7 @@ public class P38 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 9:
@@ -323,7 +323,7 @@ public class P38 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 8:
@@ -353,7 +353,7 @@ public class P38 {
         current_loc = 11;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 7:
@@ -383,7 +383,7 @@ public class P38 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 6:
@@ -413,7 +413,7 @@ public class P38 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 5:
@@ -443,7 +443,7 @@ public class P38 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 4:
@@ -473,7 +473,7 @@ public class P38 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 3:
@@ -503,7 +503,7 @@ public class P38 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 2:
@@ -533,7 +533,7 @@ public class P38 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 1:
@@ -563,7 +563,7 @@ public class P38 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     default:

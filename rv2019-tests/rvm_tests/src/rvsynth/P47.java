@@ -3,7 +3,7 @@ package rvsynth;
 public class P47 {
   int current_loc = 1;
 
-  public int /* output (0 = unknown, 1 = true, 2 = false, 3 = error) */
+  public int /* out (0 = unknown, 1 = true, 2 = false, 3 = out-of-model) */
     run (long state,
          int reset) /* in (0 = none, 1 = hard, 2 = soft) */
   {
@@ -49,7 +49,7 @@ public class P47 {
         current_loc = 3;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 8:
@@ -75,7 +75,7 @@ public class P47 {
         current_loc = 3;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 7:
@@ -101,7 +101,7 @@ public class P47 {
         current_loc = 3;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 6:
@@ -127,7 +127,7 @@ public class P47 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 5:
@@ -153,7 +153,7 @@ public class P47 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 4:
@@ -179,7 +179,7 @@ public class P47 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 3:
@@ -205,7 +205,7 @@ public class P47 {
         current_loc = 3;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 2:
@@ -231,7 +231,7 @@ public class P47 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     case 1:
@@ -257,7 +257,7 @@ public class P47 {
         current_loc = 2;
       }
       else {
-        output = 3; /* error */
+        output = 3; /* out-of-model */
       }
       break;
     default:
