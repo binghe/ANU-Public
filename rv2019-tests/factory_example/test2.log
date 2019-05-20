@@ -1,0 +1,157 @@
+nuXmv > read_model -i test2.smv 
+nuXmv > go
+nuXmv > check_ltlspec
+-- specification !( F BIv)  is false
+-- as demonstrated by the following execution sequence
+Trace Description: LTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 1.1 <-
+    s.bottle_present[0] = FALSE
+    s.bottle_present[1] = FALSE
+    s.bottle_present[2] = FALSE
+    s.move_belt = FALSE
+    s.new_bottle = FALSE
+    s.bottle_ingr1[0] = FALSE
+    s.bottle_ingr1[1] = FALSE
+    s.bottle_ingr1[2] = FALSE
+    s.bottle_ingr2[0] = FALSE
+    s.bottle_ingr2[1] = FALSE
+    s.bottle_ingr2[2] = FALSE
+    s.fault = FALSE
+    M._loc = 7
+    M._out = unknown
+    M_BI._loc = 2
+    M_BI._out = unknown
+    BIv = FALSE
+    M._concl = FALSE
+    M._valid = TRUE
+    M._error = FALSE
+    M._unknown = TRUE
+    M._false = FALSE
+    M._true = FALSE
+    M_BI._concl = FALSE
+    M_BI._valid = TRUE
+    M_BI._error = FALSE
+    M_BI._unknown = TRUE
+    M_BI._false = FALSE
+    M_BI._true = FALSE
+  -> State: 1.2 <-
+    s.move_belt = TRUE
+  -> State: 1.3 <-
+    s.move_belt = FALSE
+    M._loc = 8
+    M_BI._loc = 3
+  -> State: 1.4 <-
+    s.move_belt = TRUE
+    s.new_bottle = TRUE
+    M._loc = 7
+    M_BI._loc = 2
+  -> State: 1.5 <-
+    s.bottle_present[0] = TRUE
+    s.move_belt = FALSE
+    s.new_bottle = FALSE
+    s.fault = TRUE
+    M._loc = 8
+    M_BI._loc = 3
+  -> State: 1.6 <-
+    s.move_belt = TRUE
+    s.fault = FALSE
+    M._loc = 7
+    M_BI._loc = 4
+  -> State: 1.7 <-
+    s.bottle_present[0] = FALSE
+    s.bottle_present[1] = TRUE
+    s.move_belt = FALSE
+    M._loc = 8
+    M_BI._loc = 7
+    M_BI._out = false
+    BIv = TRUE
+    M_BI._concl = TRUE
+    M_BI._unknown = FALSE
+    M_BI._false = TRUE
+  -> State: 1.8 <-
+    s.bottle_ingr2[1] = TRUE
+    M._loc = 7
+    M_BI._loc = 8
+  -> State: 1.9 <-
+    s.move_belt = TRUE
+    M_BI._loc = 83
+  -> State: 1.10 <-
+    s.bottle_present[1] = FALSE
+    s.bottle_present[2] = TRUE
+    s.move_belt = FALSE
+    s.bottle_ingr2[1] = FALSE
+    s.bottle_ingr2[2] = TRUE
+    M._loc = 8
+    M_BI._loc = 84
+  -> State: 1.11 <-
+    s.move_belt = TRUE
+    M._loc = 17
+    M._out = false
+    M_BI._loc = 32
+    BIv = FALSE
+    M._concl = TRUE
+    M._unknown = FALSE
+    M._false = TRUE
+  -- Loop starts here
+  -> State: 1.12 <-
+    s.bottle_present[2] = FALSE
+    s.move_belt = FALSE
+    s.bottle_ingr2[2] = FALSE
+    M._loc = 26
+    M_BI._loc = 33
+  -> State: 1.13 <-
+    s.move_belt = TRUE
+    M._loc = 18
+    M_BI._loc = 34
+  -> State: 1.14 <-
+    s.move_belt = FALSE
+    M._loc = 19
+    M_BI._loc = 66
+  -> State: 1.15 <-
+    s.move_belt = TRUE
+    s.new_bottle = TRUE
+    M._loc = 18
+    M_BI._loc = 34
+  -> State: 1.16 <-
+    s.bottle_present[0] = TRUE
+    s.move_belt = FALSE
+    s.new_bottle = FALSE
+    s.fault = TRUE
+    M._loc = 19
+    M_BI._loc = 66
+  -> State: 1.17 <-
+    s.move_belt = TRUE
+    s.fault = FALSE
+    M._loc = 18
+    M_BI._loc = 35
+  -> State: 1.18 <-
+    s.bottle_present[0] = FALSE
+    s.bottle_present[1] = TRUE
+    s.move_belt = FALSE
+    M._loc = 19
+    M_BI._loc = 7
+  -> State: 1.19 <-
+    s.move_belt = TRUE
+    s.bottle_ingr2[1] = TRUE
+    M._loc = 18
+    M_BI._loc = 8
+  -> State: 1.20 <-
+    s.bottle_present[1] = FALSE
+    s.bottle_present[2] = TRUE
+    s.move_belt = FALSE
+    s.bottle_ingr2[1] = FALSE
+    s.bottle_ingr2[2] = TRUE
+    M._loc = 19
+    M_BI._loc = 84
+  -> State: 1.21 <-
+    s.move_belt = TRUE
+    M._loc = 17
+    M_BI._loc = 32
+  -> State: 1.22 <-
+    s.bottle_present[2] = FALSE
+    s.move_belt = FALSE
+    s.bottle_ingr2[2] = FALSE
+    M._loc = 26
+    M_BI._loc = 33
+nuXmv > 

@@ -1,0 +1,163 @@
+-- Flattened Boolean FSM model  generated from Factory_BI.smv
+-- Dumped cwd->layers are: model model_bool determ determ_bool __TempLayer_0 
+
+MODULE main
+-- Input variables from layer 'model'
+-- Input variables from layer 'model_bool'
+-- Input variables from layer 'determ'
+-- Input variables from layer 'determ_bool'
+-- Input variables from layer '__TempLayer_0'
+-- State variables from layer 'model'
+VAR
+s.bottle_present[0] : boolean;
+s.bottle_present[1] : boolean;
+s.bottle_present[2] : boolean;
+s.move_belt : boolean;
+s.new_bottle : boolean;
+s.bottle_ingr1[0] : boolean;
+s.bottle_ingr1[1] : boolean;
+s.bottle_ingr1[2] : boolean;
+s.bottle_ingr2[0] : boolean;
+s.bottle_ingr2[1] : boolean;
+s.bottle_ingr2[2] : boolean;
+s.fault : boolean;
+
+-- State variables from layer 'model_bool'
+-- State variables from layer 'determ'
+-- State variables from layer 'determ_bool'
+-- State variables from layer '__TempLayer_0'
+-- Frozen variables from layer 'model'
+-- Frozen variables from layer 'model_bool'
+-- Frozen variables from layer 'determ'
+-- Frozen variables from layer 'determ_bool'
+-- Frozen variables from layer '__TempLayer_0'
+INIT
+ !s.bottle_present[0]
+
+INIT
+ !s.bottle_present[1]
+
+INIT
+ !s.bottle_present[2]
+
+INIT
+ !s.bottle_ingr1[0]
+
+INIT
+ !s.bottle_ingr1[1]
+
+INIT
+ !s.bottle_ingr1[2]
+
+INIT
+ !s.bottle_ingr2[0]
+
+INIT
+ !s.bottle_ingr2[1]
+
+INIT
+ !s.bottle_ingr2[2]
+
+
+
+TRANS
+ __expr0
+
+TRANS
+ __expr1
+
+TRANS
+ __expr3
+
+TRANS
+ __expr0
+
+TRANS
+ __expr4
+
+TRANS
+ __expr6
+
+TRANS
+ __expr1
+
+TRANS
+ __expr4
+
+TRANS
+ (!s.move_belt | !next(s.move_belt))
+
+TRANS
+ __expr7
+
+TRANS
+ __expr8
+
+TRANS
+ __expr9
+
+TRANS
+ __expr3
+
+TRANS
+ __expr7
+
+TRANS
+ __expr8
+
+TRANS
+ !next(s.bottle_ingr2[0])
+
+TRANS
+ __expr6
+
+TRANS
+ __expr9
+
+
+FAIRNESS
+ s.move_belt
+
+
+-- Symbols introduced by the dumper:
+DEFINE __expr0 := (next(s.bottle_present[0]) <-> case
+s.move_belt : s.new_bottle;
+TRUE : s.bottle_present[0];
+esac) ;
+
+DEFINE __expr9 := (next(s.bottle_ingr2[2]) <-> case
+s.move_belt : s.bottle_ingr2[1];
+TRUE : s.bottle_ingr2[2];
+esac) ;
+
+DEFINE __expr3 := (next(s.bottle_ingr1[0]) <-> (!s.move_belt & __expr2)) ;
+
+DEFINE __expr4 := (next(s.bottle_present[2]) <-> case
+s.move_belt : s.bottle_present[1];
+TRUE : s.bottle_present[2];
+esac) ;
+
+DEFINE __expr5 := (s.bottle_present[1] & !s.fault) ;
+
+DEFINE __expr7 := (next(s.bottle_ingr1[1]) <-> case
+s.move_belt : s.bottle_ingr1[0];
+TRUE : s.bottle_ingr1[1];
+esac) ;
+
+DEFINE __expr8 := (next(s.bottle_ingr1[2]) <-> case
+s.move_belt : s.bottle_ingr1[1];
+TRUE : s.bottle_ingr1[2];
+esac) ;
+
+DEFINE __expr6 := (next(s.bottle_ingr2[1]) <-> case
+s.move_belt : s.bottle_ingr2[0];
+TRUE : __expr5;
+esac) ;
+
+DEFINE __expr2 := (s.bottle_present[0] & !s.fault) ;
+
+DEFINE __expr1 := (next(s.bottle_present[1]) <-> case
+s.move_belt : s.bottle_present[0];
+TRUE : s.bottle_present[1];
+esac) ;
+
