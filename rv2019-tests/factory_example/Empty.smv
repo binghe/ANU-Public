@@ -1,9 +1,0 @@
-MODULE Empty
-
-VAR bottle_present: array 0..2 of boolean;
-VAR move_belt: boolean;
-VAR new_bottle: boolean;
-
-VAR bottle_ingr1: array 0..2 of boolean;
-VAR bottle_ingr2: array 0..2 of boolean;
-VAR fault: boolean;

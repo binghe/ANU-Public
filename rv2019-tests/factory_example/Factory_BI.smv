@@ -1,5 +1,0 @@
-#include "Factory.smv"
-
-MODULE main
-
-VAR s: Factory;

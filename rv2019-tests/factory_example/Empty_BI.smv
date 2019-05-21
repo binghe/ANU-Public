@@ -1,5 +1,0 @@
-#include "Empty.smv"
-
-MODULE main
-
-VAR s: Empty;
