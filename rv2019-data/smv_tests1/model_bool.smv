@@ -1,0 +1,113 @@
+-- Flattened Boolean FSM model  generated from model_new.smv
+-- Dumped cwd->layers are: model model_bool determ determ_bool __TempLayer_0 
+
+MODULE system (s)
+
+-- Input variables from layer 'model'
+-- Input variables from layer 'model_bool'
+-- Input variables from layer 'determ'
+-- Input variables from layer 'determ_bool'
+-- Input variables from layer '__TempLayer_0'
+-- State variables from layer 'model'
+VAR
+SUS.x_11 : boolean;
+SUS.x_9 : boolean;
+SUS.x_7 : boolean;
+SUS.x_5 : boolean;
+SUS.x_3 : boolean;
+SUS.x_1 : boolean;
+
+-- State variables from layer 'model_bool'
+-- State variables from layer 'determ'
+-- State variables from layer 'determ_bool'
+-- State variables from layer '__TempLayer_0'
+-- Frozen variables from layer 'model'
+-- Frozen variables from layer 'model_bool'
+-- Frozen variables from layer 'determ'
+-- Frozen variables from layer 'determ_bool'
+-- Frozen variables from layer '__TempLayer_0'
+INIT
+ (__expr0 | __expr13)
+
+
+
+TRANS
+ (((__expr16 | __expr21) | (__expr14 & next(SUS.x_3))) <-> SUS.x_3)
+
+TRANS
+ (__expr21 <-> SUS.x_7)
+
+TRANS
+ (__expr20 <-> SUS.x_9)
+
+TRANS
+ (__expr19 <-> SUS.x_11)
+
+TRANS
+ (__expr15 <-> SUS.x_5)
+
+TRANS
+ (__expr17 <-> SUS.x_1)
+
+
+FAIRNESS
+ (!__expr13 | __expr11)
+
+
+FAIRNESS
+ (!__expr10 | __expr8)
+
+
+FAIRNESS
+ (!__expr7 | __expr5)
+
+
+FAIRNESS
+ (!__expr4 | __expr0)
+
+
+-- Symbols introduced by the dumper:
+DEFINE __expr17 := (next(s) | next(SUS.x_1)) ;
+
+DEFINE __expr4 := (__expr0 | (s & SUS.x_11)) ;
+
+DEFINE __expr20 := ((__expr16 | __expr19) | (__expr14 & next(SUS.x_9))) ;
+
+DEFINE __expr12 := (__expr1 & SUS.x_3) ;
+
+DEFINE __expr0 := !(s | SUS.x_1) ;
+
+DEFINE __expr16 := !__expr15 ;
+
+DEFINE __expr19 := (__expr18 | (next(s) & next(SUS.x_11))) ;
+
+DEFINE __expr14 := !next(s) ;
+
+DEFINE __expr9 := (s & SUS.x_7) ;
+
+DEFINE __expr8 := (__expr0 | __expr7) ;
+
+DEFINE __expr3 := !__expr2 ;
+
+DEFINE __expr1 := !s ;
+
+DEFINE __expr18 := !__expr17 ;
+
+DEFINE __expr5 := (__expr3 | __expr4) ;
+
+DEFINE __expr13 := (__expr11 | __expr12) ;
+
+DEFINE __expr10 := (__expr8 | __expr9) ;
+
+DEFINE __expr6 := (__expr1 & SUS.x_9) ;
+
+DEFINE __expr21 := ((__expr18 | __expr20) | (next(s) & next(SUS.x_7))) ;
+
+DEFINE __expr15 := (__expr14 | next(SUS.x_5)) ;
+
+DEFINE __expr11 := (__expr3 | __expr10) ;
+
+DEFINE __expr7 := (__expr5 | __expr6) ;
+
+DEFINE __expr2 := (__expr1 | SUS.x_5) ;
+

@@ -1,0 +1,51 @@
+time, p, q, r, s, t, z
+1, true, , false, false, true, 
+2, , false, , true, true, true
+3, true, true, , , , false
+4, , , , false, true, false
+5, , , true, false, , false
+6, , true, , true, true, true
+7, false, , true, , true, 
+8, , , false, false, , 
+9, , false, , , , 
+10, false, false, true, true, , false
+11, true, , false, false, true, true
+12, , false, false, , , false
+13, , true, true, true, false, true
+14, true, , true, false, true, false
+15, , true, true, true, true, 
+16, false, true, true, , true, 
+17, false, false, , true, , false
+18, true, , true, false, false, false
+19, false, true, false, true, , true
+20, true, , true, , false, 
+21, , false, , , , true
+22, , true, , true, false, false
+23, true, false, false, false, true, false
+24, , , true, true, true, false
+25, true, false, , , , 
+26, false, , , false, true, 
+27, true, , , , true, false
+28, false, false, true, true, , false
+29, false, false, false, , false, 
+30, false, , , , , 
+31, false, , , true, , false
+32, , false, false, true, false, true
+33, false, false, true, false, true, 
+34, true, false, false, true, , 
+35, true, false, , false, true, false
+36, , true, true, , , 
+37, false, , , true, , 
+38, , false, false, , true, true
+39, , false, true, true, false, false
+40, false, false, , false, false, true
+41, true, false, false, false, false, 
+42, true, false, , false, false, true
+43, false, false, , , , 
+44, , false, true, true, false, false
+45, false, false, true, true, true, 
+46, false, true, true, , , 
+47, false, , , true, false, true
+48, false, true, true, false, true, false
+49, false, true, , true, false, 
+50, false, true, true, false, , false

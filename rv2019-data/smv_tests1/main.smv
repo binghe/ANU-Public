@@ -1,0 +1,14 @@
+-- this is the main module for synthesising monitors with BI
+
+#include "model_old.smv"
+
+MODULE main
+VAR
+  p : boolean;
+  q : boolean;
+  r : boolean;
+  s : boolean;
+  t : boolean;
+  z : boolean;
+
+  SUS : system (s);

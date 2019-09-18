@@ -1,0 +1,43 @@
+-- This is the SMV model manually translated from LTL pattern 10:
+--
+--   Bounded Existence: transitions to P-states occur at most 2 times
+--
+-- with the possibility to limit the times remaining at each state.
+
+-- TODO: Impossible to build a boolean FSM with infinite precision variables
+
+MODULE system (out)
+
+FROZENVAR
+  limit : 0 .. 10;
+
+VAR
+  loc   : 0 .. 4;
+  c     : 0 .. 10;
+
+ASSIGN
+  out := (loc = 1) | (loc = 3);
+
+  init(limit) := 5;
+
+  init(c) := 0;
+  next(c) := case
+    (loc = 0 & next(loc) = 0 & c < limit) : c + 1;
+    (loc = 1 & next(loc) = 1 & c < limit) : c + 1;
+    (loc = 2 & next(loc) = 2 & c < limit) : c + 1;
+    (loc = 3 & next(loc) = 3 & c < limit) : c + 1;
+    TRUE : 0;
+  esac;
+
+  init(loc) := 0;
+  next(loc) := case
+    (loc = 0 & c < limit) : {0, 1};
+    (loc = 0 & c = limit) : 1;
+    (loc = 1 & c < limit) : {1, 2};
+    (loc = 1 & c = limit) : 2;
+    (loc = 2 & c < limit) : {2, 3};
+    (loc = 2 & c = limit) : 3;
+    (loc = 3 & c < limit) : {3, 4};
+    (loc = 3 & c = limit) : 4;
+    TRUE : 4;
+  esac;

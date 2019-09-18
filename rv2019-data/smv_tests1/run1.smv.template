@@ -1,0 +1,34 @@
+#include "patterns_with_BI/MONITOR.smv"
+#include "model.smv"
+
+MODULE main
+
+VAR
+  p : boolean;
+  q : boolean;
+  r : boolean;
+  s : boolean;
+  t : boolean;
+  z : boolean;
+  _reset : boolean;
+  Mon : MONITOR(p, q, r, s, t, z, _reset);
+  Sus : system(s);
+
+-- disable soft resets
+INVAR !_reset;
+
+-- monotonicity of monitors (with BI)
+LTLSPEC	(G Mon._unknown) |
+	(Mon._unknown U
+	  (Mon._error | (G Mon._concl) | (Mon._concl U Mon._error)))
+
+LTLSPEC G (Mon._true  -> ((G Mon._true)  | (Mon._true  U Mon._error)))
+LTLSPEC G (Mon._false -> ((G Mon._false) | (Mon._false U Mon._error)))
+LTLSPEC	G (Mon._error -> G Mon._error)
+
+-- correctness of monitoring property
+-- This is surprisingly false (shown by p40) unless SUS is used.
+LTLSPEC (F Mon._true) -> (PROPERTY)
+
+-- This is surprisingly false (shown by p25) unless SUS is used.
+LTLSPEC (F Mon._false) -> !(PROPERTY)

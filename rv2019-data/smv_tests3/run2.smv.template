@@ -1,0 +1,76 @@
+#include "patterns/MONITORs.smv"
+
+MODULE main
+
+VAR
+  p : boolean;
+  q : boolean;
+  r : boolean;
+  s : boolean;
+  t : boolean;
+  z : boolean;
+  _reset : boolean;
+
+-- partial variables of M1
+VAR
+  _p1 : { true, false, unknown };
+  _q1 : { true, false, unknown };
+  _r1 : { true, false, unknown };
+  _s1 : { true, false, unknown };
+  _t1 : { true, false, unknown };
+  _z1 : { true, false, unknown };
+
+-- partial variables of M2
+VAR
+  _p2 : { true, false, unknown };
+  _q2 : { true, false, unknown };
+  _r2 : { true, false, unknown };
+  _s2 : { true, false, unknown };
+  _t2 : { true, false, unknown };
+  _z2 : { true, false, unknown };
+
+VAR
+  M1 : MONITORs(_p1, _q1, _r1, _s1, _t1, _z1, _reset);
+  M2 : MONITORs(_p2, _q2, _r2, _s2, _t2, _z2, _reset);
+
+-- disable soft resets
+INVAR !_reset;
+
+-- link SUS variable with M1 variables
+INVAR
+  ((_p1 = true) -> p) & ((_p1 = false) -> !p) &
+  ((_q1 = true) -> q) & ((_q1 = false) -> !q) &
+  ((_r1 = true) -> r) & ((_r1 = false) -> !r) &
+  ((_s1 = true) -> s) & ((_s1 = false) -> !s) &
+  ((_t1 = true) -> t) & ((_t1 = false) -> !t) &
+  ((_z1 = true) -> z) & ((_z1 = false) -> !z);
+
+-- link SUS variable with M2 variables
+INVAR
+  ((_p2 = true) -> p) & ((_p2 = false) -> !p) &
+  ((_q2 = true) -> q) & ((_q2 = false) -> !q) &
+  ((_r2 = true) -> r) & ((_r2 = false) -> !r) &
+  ((_s2 = true) -> s) & ((_s2 = false) -> !s) &
+  ((_t2 = true) -> t) & ((_t2 = false) -> !t) &
+  ((_z2 = true) -> z) & ((_z2 = false) -> !z);
+
+-- M1 sees things more clearly: whenever _p1 = unknown,
+-- _p2 must be also unknown; but if _p1 = true/false,
+-- _p2 can still be unknown.
+INVAR
+   ((_p1 = unknown) -> (_p2 = unknown)) &
+   ((_q1 = unknown) -> (_q2 = unknown)) &
+   ((_r1 = unknown) -> (_r2 = unknown)) &
+   ((_s1 = unknown) -> (_s2 = unknown)) &
+   ((_t1 = unknown) -> (_t2 = unknown)) &
+   ((_z1 = unknown) -> (_z2 = unknown));
+
+LTLSPEC
+  -- M2 (with less observables) cannot be "smarter" than M1 (with more observables),
+  -- i.e. if M1._out = unknown, M2._out must be the same.
+  G (M1._unknown -> M2._unknown);
+
+LTLSPEC
+  -- there are always cases when M2 is conclusive (if possible)
+  -- and M1 is still unknown (e.g. all unknown inputs)
+  F (M2._concl -> M1._unknown)

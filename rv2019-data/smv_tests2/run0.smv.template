@@ -1,0 +1,69 @@
+#include "patterns_with_BI/MONITORs.smv"
+#include "model_old.smv"
+
+MODULE main
+
+VAR
+  p : boolean;
+  q : boolean;
+  r : boolean;
+  s : boolean;
+  t : boolean;
+  z : boolean;
+  _reset : boolean;
+  Mon : MONITORs(p, q, r, s, t, z, _reset);
+  Sus : system(s);
+
+INVAR
+	(!p & !q & !r & !s & !t & !z) |
+	(p & !q & !r & !s & !t & !z) |
+	(!p & q & !r & !s & !t & !z) |
+	(!p & !q & r & !s & !t & !z) |
+	(!p & !q & !r & s & !t & !z) |
+	(!p & !q & !r & !s & t & !z) |
+	(!p & !q & !r & !s & !t & z)
+
+-- Because of the uses of SUS, all traces are valid for the monitor.
+INVARSPEC	Mon._valid
+
+LTLSPEC
+  -- If the only `_reset` happens at step n (given by number of Xs),
+  -- and eventually Mon gives _true,
+  -- then [s |= X^n phi] is true.
+  -- (changing the number of Xs does not change the validity)
+  
+  ((!_reset U (_reset & X (G !_reset))) &
+   X X X X X X X (_reset & X (F Mon._true)))
+  ->
+   X X X X X X X (PROPERTY);
+
+LTLSPEC
+  -- Dually, if the only `_reset` happens at step n (given by number of Xs),
+  -- and eventually Mon gives _false,
+  -- then [s |= X^n !phi] is true.
+  -- (changing the number of Xs does not change the validity)
+  
+  ((!_reset U (_reset & X (G !_reset))) &
+   X X X X X X X (_reset & X (F Mon._false)))
+  ->
+   X X X X X X X !(PROPERTY);
+
+LTLSPEC
+  -- If the last `_reset` happens at step n (given by number of Xs),
+  -- and eventually Mon gives _true,
+  -- then [s |= X^n phi] is also true.
+  -- (changing the number of Xs does not change the validity)
+
+  (X X X X X X X (_reset & X (!_reset U Mon._true)))
+  ->
+   X X X X X X X (PROPERTY);
+
+LTLSPEC
+  -- Dually, if the last `_reset` happens at step n (given by number of Xs),
+  -- and eventually Mon gives _true,
+  -- then [s |= X^n phi] is also true.
+  -- (changing the number of Xs does not change the validity)
+
+  (X X X X X X X (_reset & X (!_reset U Mon._false)))
+  ->
+   X X X X X X X !(PROPERTY);

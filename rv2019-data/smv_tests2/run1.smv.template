@@ -1,0 +1,84 @@
+#include "patterns_with_BI2/MONITORs.smv"
+#include "model_old.smv"
+
+MODULE main
+
+VAR
+  p : boolean;
+  q : boolean;
+  r : boolean;
+  s : boolean;
+  t : boolean;
+  z : boolean;
+  _p : { true, false, unknown };
+  _q : { true, false, unknown };
+  _r : { true, false, unknown };
+  _s : { true, false, unknown };
+  _t : { true, false, unknown };
+  _z : { true, false, unknown };
+  _reset : boolean;
+  Mon : MONITORs (_p, _q, _r, _s, _t, _z, _reset);
+  Sus : system(s);
+
+INVAR
+	(!p & !q & !r & !s & !t & !z) |
+	(p & !q & !r & !s & !t & !z) |
+	(!p & q & !r & !s & !t & !z) |
+	(!p & !q & r & !s & !t & !z) |
+	(!p & !q & !r & s & !t & !z) |
+	(!p & !q & !r & !s & t & !z) |
+	(!p & !q & !r & !s & !t & z)
+
+-- link SUS variable with Mon variables
+INVAR
+  ((_p = true) -> p) & ((_p = false) -> !p) &
+  ((_q = true) -> q) & ((_q = false) -> !q) &
+  ((_r = true) -> r) & ((_r = false) -> !r) &
+  ((_s = true) -> s) & ((_s = false) -> !s) &
+  ((_t = true) -> t) & ((_t = false) -> !t) &
+  ((_z = true) -> z) & ((_z = false) -> !z);
+
+-- Because of the uses of SUS, all traces are valid for the monitor.
+INVARSPEC	Mon._valid
+
+LTLSPEC
+  -- If the only `_reset` happens at step n (given by number of Xs),
+  -- and eventually Mon gives _true,
+  -- then [s |= X^n phi] is true.
+  -- (changing the number of Xs does not change the validity)
+  
+  ((!_reset U (_reset & X (G !_reset))) &
+   X X X X X X X (_reset & X (F Mon._true)))
+  ->
+   X X X X X X X (PROPERTY);
+
+LTLSPEC
+  -- Dually, if the only `_reset` happens at step n (given by number of Xs),
+  -- and eventually Mon gives _false,
+  -- then [s |= X^n !phi] is true.
+  -- (changing the number of Xs does not change the validity)
+  
+  ((!_reset U (_reset & X (G !_reset))) &
+   X X X X X X X (_reset & X (F Mon._false)))
+  ->
+   X X X X X X X !(PROPERTY);
+
+LTLSPEC
+  -- If the last `_reset` happens at step n (given by number of Xs),
+  -- and eventually Mon gives _true,
+  -- then [s |= X^n phi] is also true.
+  -- (changing the number of Xs does not change the validity)
+
+  (X X X X X X X (_reset & X (!_reset U Mon._true)))
+  ->
+   X X X X X X X (PROPERTY);
+
+LTLSPEC
+  -- Dually, if the last `_reset` happens at step n (given by number of Xs),
+  -- and eventually Mon gives _true,
+  -- then [s |= X^n phi] is also true.
+  -- (changing the number of Xs does not change the validity)
+
+  (X X X X X X X (_reset & X (!_reset U Mon._false)))
+  ->
+   X X X X X X X !(PROPERTY);

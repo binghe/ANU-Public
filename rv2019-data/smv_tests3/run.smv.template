@@ -1,0 +1,43 @@
+#include "patterns_fullobs/MONITOR.smv"
+#include "patterns/MONITORs.smv"
+
+MODULE main
+
+VAR
+  p : boolean;
+  q : boolean;
+  r : boolean;
+  s : boolean;
+  t : boolean;
+  z : boolean;
+  _p : { true, false, unknown };
+  _q : { true, false, unknown };
+  _r : { true, false, unknown };
+  _s : { true, false, unknown };
+  _t : { true, false, unknown };
+  _z : { true, false, unknown };
+  _reset : boolean;
+  M1 : MONITOR ( p,  q,  r,  s,  t,  z, _reset);
+  M2 : MONITORs(_p, _q, _r, _s, _t, _z, _reset);
+
+-- disable soft resets
+INVAR !_reset;
+
+-- link SUS variable with Mon variables
+INVAR
+  ((_p = true) -> p) & ((_p = false) -> !p) &
+  ((_q = true) -> q) & ((_q = false) -> !q) &
+  ((_r = true) -> r) & ((_r = false) -> !r) &
+  ((_s = true) -> s) & ((_s = false) -> !s) &
+  ((_t = true) -> t) & ((_t = false) -> !t) &
+  ((_z = true) -> z) & ((_z = false) -> !z);
+
+LTLSPEC
+  -- M2 (parial input) cannot be "smarter" than M1 (full input),
+  -- i.e. if M1._out = unknown, M2._out must be the same.
+  G (M1._unknown -> M2._unknown);
+
+LTLSPEC
+  -- there are always cases when M2 is conclusive (if possible)
+  -- and M1 is still unknown (e.g. all unknown inputs)
+  F (M2._concl -> M1._unknown)
