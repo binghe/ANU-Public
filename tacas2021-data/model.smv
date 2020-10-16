@@ -1,0 +1,13 @@
+MODULE main
+VAR
+    p : boolean ;
+    i : integer ;
+    x : real    ;
+    s : boolean ;
+    t : boolean ;
+    z : boolean ;
+DEFINE
+    q := (0   <= i) ;
+    r := (0.0 <= x) ;
+
+#include "patterns.smv"

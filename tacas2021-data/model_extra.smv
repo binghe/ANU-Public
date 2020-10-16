@@ -1,0 +1,11 @@
+#include "model.smv"
+
+-- RV assumption: "p-transition occurs at most N times"
+VAR
+    c : integer ;
+INIT
+    c = 0 ;
+INVAR
+    c <= 4 ;
+TRANS
+    (!p & next(p)) ? (next(c) = c + 1) : (next(c) = c) ;
