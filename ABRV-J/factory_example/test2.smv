@@ -1,0 +1,17 @@
+#include "Factory.smv"
+
+#include "monitor.smv"
+#include "monitor_BI.smv"
+
+MODULE main
+
+VAR
+  s : Factory;
+  M1 : M_BI (s);
+  M2 : M (s);
+
+DEFINE
+  -- AV is valuable if M1 (with BI) has reached conclusive verdicts while M2 (w/o BI) has not:
+  AV := (M1._concl & !M2._concl);
+
+LTLSPEC	!F AV

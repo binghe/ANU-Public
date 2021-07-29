@@ -1,0 +1,46 @@
+-- This is the Boolean model translated from LTL pattern 10:
+--
+--   Bounded Existence: transitions to s-states occur at most 2 times
+--
+-- generated from LTL2SMV program by LTL expression (with P or p changed to out)
+--   (!P W (P W (!P W (P W []!P))))
+-- or
+--   G (!p) | (!p U (G p | (p U (G (!p) | (!p U (G p | (p U (G (!p)))))))))
+
+MODULE system (out)
+VAR
+   x_11 : boolean;
+   x_9 : boolean;
+   x_7 : boolean;
+   x_5 : boolean;
+   x_3 : boolean;
+   x_1 : boolean;
+DEFINE
+   x_2 := ((!x_4 | x_6) | (!out & x_3));
+   x_6 := ((!x_0 | x_8) | (out & x_7));
+   x_8 := ((!x_4 | x_10) | (!out & x_9));
+   x_10 := (!x_0 | (out & x_11));
+   x_4 := (!out | x_5);
+   x_0 := (out | x_1);
+INIT
+   (!x_0 | x_2)
+JUSTICE
+   (!x_2 | (!x_4 | x_6))
+JUSTICE
+   (!x_6 | (!x_0 | x_8))
+JUSTICE
+   (!x_8 | (!x_4 | x_10))
+JUSTICE
+   (!x_10 | !x_0)
+TRANS
+   next(x_2) = x_3
+TRANS
+   next(x_6) = x_7
+TRANS
+   next(x_8) = x_9
+TRANS
+   next(x_10) = x_11
+TRANS
+   next(x_4) = x_5
+TRANS
+   next(x_0) = x_1

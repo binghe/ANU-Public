@@ -1,0 +1,43 @@
+-- Usefulness of Background Information - existence of shorter traces
+-- M1: monitor with BI
+-- M2: monitor w/o BI
+
+-- The monitoring property is PROPERTY
+
+#include "patterns/MONITOR.smv"
+#include "patterns_with_BI2/MONITORs.smv"
+#include "model.smv"
+
+MODULE main
+
+VAR
+  p : boolean;
+  q : boolean;
+  r : boolean;
+  s : boolean;
+  t : boolean;
+  z : boolean;
+  _reset : boolean;
+  M1 : MONITORs (p, q, r, s, t, z, _reset);
+  M2 : MONITOR  (p, q, r, s, t, z, _reset);
+  SUS : system (s);
+  c : 0 .. 50;
+
+DEFINE
+  -- BI is valuable if M1 has reached conclusive verdicts while M2 is not (yet):
+  BIv := (M1._concl & !M2._concl);
+  agree := (M1._out = M2._out);
+
+-- disable soft resets
+INVAR !_reset;
+
+-- This should only work for some but not all monitors:
+
+ASSIGN
+  init(c) := 0;
+  next(c) := (BIv & c < 50) ? (c + 1) : c;
+
+-- This should only work for some but not all monitors:
+-- INVARSPEC c < DIFF
+
+LTLSPEC G (BIv -> F agree)

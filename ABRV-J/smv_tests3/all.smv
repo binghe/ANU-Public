@@ -1,0 +1,12 @@
+MODULE main
+VAR
+	p : boolean;
+	q : boolean;
+	r : boolean;
+	s : boolean;
+	t : boolean;
+	z : boolean;
+INIT
+	TRUE
+TRANS
+	TRUE

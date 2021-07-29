@@ -1,0 +1,54 @@
+#include "patterns/MONITOR.smv"
+
+MODULE main
+
+VAR
+  p : boolean;
+  q : boolean;
+  r : boolean;
+  s : boolean;
+  t : boolean;
+  z : boolean;
+  _p : { true, false, unknown };
+  _q : { true, false, unknown };
+  _r : { true, false, unknown };
+  _s : { true, false, unknown };
+  _t : { true, false, unknown };
+  _z : { true, false, unknown };
+  _reset : boolean;
+  Mon : MONITOR (_p, _q, _r, _s, _t, _z, _reset);
+
+-- disable soft resets
+INVAR !_reset;
+
+-- link SUS variable with Mon variables
+INVAR
+  ((_p = true) -> p) & ((_p = false) -> !p) &
+  ((_q = true) -> q) & ((_q = false) -> !q) &
+  ((_r = true) -> r) & ((_r = false) -> !r) &
+  ((_s = true) -> s) & ((_s = false) -> !s) &
+  ((_t = true) -> t) & ((_t = false) -> !t) &
+  ((_z = true) -> z) & ((_z = false) -> !z);
+
+-- 1. monitors without BI
+
+-- monotonicity of monitors
+LTLSPEC	(G Mon._unknown) | (Mon._unknown U Mon._concl)
+LTLSPEC G (Mon._true  -> G Mon._true)
+LTLSPEC G (Mon._false -> G Mon._false)
+
+-- correctness of monitoring property
+LTLSPEC (F Mon._true) -> (PROPERTY)
+LTLSPEC (F Mon._false) -> !(PROPERTY)
+
+-- 2. extended with BI
+
+-- monotonicity of monitors
+
+LTLSPEC	(G Mon._unknown) |
+	(Mon._unknown U
+	  (Mon._error | (G Mon._concl) | (Mon._concl U Mon._error)))
+
+LTLSPEC G (Mon._true  -> ((G Mon._true)  | (Mon._true  U Mon._error)))
+LTLSPEC G (Mon._false -> ((G Mon._false) | (Mon._false U Mon._error)))
+LTLSPEC	G (Mon._error -> G Mon._error)
