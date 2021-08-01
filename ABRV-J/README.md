@@ -1,6 +1,8 @@
 # Assumption-Based Runtime Verification (FMSD Journal Submission)
 
-tool program and test artifacts
+## Getting the tool for your platform
+
+[https://es-static.fbk.eu/tools/nurv/]
 
 ## Tests related to the RV 2019 main paper:
 
@@ -15,3 +17,4 @@ tool program and test artifacts
  
 ## Additional tests for the journal version:
 
+- `factory_example/fault_monitor.cmd`: additional tests on the factory model

@@ -18,9 +18,11 @@
       <value variable="s.bottle_present[0]">TRUE</value>
       <value variable="s.bottle_ingr1[0]">FALSE</value>
       <value variable="s.bottle_ingr2[0]">FALSE</value>
+
       <value variable="s.bottle_present[1]">FALSE</value>
       <value variable="s.bottle_ingr1[1]">FALSE</value>
       <value variable="s.bottle_ingr2[1]">FALSE</value>
+
       <value variable="s.bottle_present[2]">FALSE</value>
       <value variable="s.bottle_ingr1[2]">FALSE</value>
       <value variable="s.bottle_ingr2[2]">FALSE</value>
@@ -30,45 +32,53 @@
       <value variable="s.bottle_present[0]">TRUE</value>
       <value variable="s.bottle_ingr1[0]">TRUE</value>
       <value variable="s.bottle_ingr2[0]">FALSE</value>
+
       <value variable="s.bottle_present[1]">FALSE</value>
       <value variable="s.bottle_ingr1[1]">FALSE</value>
       <value variable="s.bottle_ingr2[1]">FALSE</value>
+
       <value variable="s.bottle_present[2]">FALSE</value>
       <value variable="s.bottle_ingr1[2]">FALSE</value>
       <value variable="s.bottle_ingr2[2]">FALSE</value>
     </state>
-    <!-- 4. start moving, no new bottle, existing one moved to position 1 -->
+    <!-- 4. start moving, new bottle at 0, existing one moved to position 1 -->
     <state id="4">
-      <value variable="s.bottle_present[0]">FALSE</value>
+      <value variable="s.bottle_present[0]">TRUE</value>
       <value variable="s.bottle_ingr1[0]">FALSE</value>
       <value variable="s.bottle_ingr2[0]">FALSE</value>
+
       <value variable="s.bottle_present[1]">TRUE</value>
       <value variable="s.bottle_ingr1[1]">TRUE</value>
       <value variable="s.bottle_ingr2[1]">FALSE</value>
+
       <value variable="s.bottle_present[2]">FALSE</value>
       <value variable="s.bottle_ingr1[2]">FALSE</value>
       <value variable="s.bottle_ingr2[2]">FALSE</value>
     </state>
-    <!-- 5. stop moving, NOT filled with ingr. 2 (FAULT HERE) -->
+    <!-- 5. stop moving, NOT filled with ingr. 1 and ingr. 2 (TWO FAULTS HERE) -->
     <state id="5">
-      <value variable="s.bottle_present[0]">FALSE</value>
+      <value variable="s.bottle_present[0]">TRUE</value>
       <value variable="s.bottle_ingr1[0]">FALSE</value>
       <value variable="s.bottle_ingr2[0]">FALSE</value>
+
       <value variable="s.bottle_present[1]">TRUE</value>
       <value variable="s.bottle_ingr1[1]">TRUE</value>
       <value variable="s.bottle_ingr2[1]">FALSE</value>
+
       <value variable="s.bottle_present[2]">FALSE</value>
       <value variable="s.bottle_ingr1[2]">FALSE</value>
       <value variable="s.bottle_ingr2[2]">FALSE</value>
     </state>
-    <!-- 6. start moving, new bottle at 0, existing one moved to position 2 -->
+    <!-- 6. start moving, new bottle at 0, existing one moved to position 1 & 2 -->
     <state id="6">
       <value variable="s.bottle_present[0]">TRUE</value>
       <value variable="s.bottle_ingr1[0]">FALSE</value>
       <value variable="s.bottle_ingr2[0]">FALSE</value>
-      <value variable="s.bottle_present[1]">FALSE</value>
+
+      <value variable="s.bottle_present[1]">TRUE</value>
       <value variable="s.bottle_ingr1[1]">FALSE</value>
       <value variable="s.bottle_ingr2[1]">FALSE</value>
+
       <value variable="s.bottle_present[2]">TRUE</value>
       <value variable="s.bottle_ingr1[2]">TRUE</value>
       <value variable="s.bottle_ingr2[2]">FALSE</value>
@@ -78,12 +88,42 @@
       <value variable="s.bottle_present[0]">TRUE</value>
       <value variable="s.bottle_ingr1[0]">TRUE</value>
       <value variable="s.bottle_ingr2[0]">FALSE</value>
-      <value variable="s.bottle_present[1]">FALSE</value>
+
+      <value variable="s.bottle_present[1]">TRUE</value>
       <value variable="s.bottle_ingr1[1]">FALSE</value>
-      <value variable="s.bottle_ingr2[1]">FALSE</value>
+      <value variable="s.bottle_ingr2[1]">TRUE</value>
+
       <value variable="s.bottle_present[2]">TRUE</value>
       <value variable="s.bottle_ingr1[2]">TRUE</value>
       <value variable="s.bottle_ingr2[2]">FALSE</value>
+    </state>
+    <!-- 8. start moving, no new bottle -->
+    <state id="8">
+      <value variable="s.bottle_present[0]">FALSE</value>
+      <value variable="s.bottle_ingr1[0]">FALSE</value>
+      <value variable="s.bottle_ingr2[0]">FALSE</value>
+
+      <value variable="s.bottle_present[1]">TRUE</value>
+      <value variable="s.bottle_ingr1[1]">TRUE</value>
+      <value variable="s.bottle_ingr2[1]">FALSE</value>
+
+      <value variable="s.bottle_present[2]">TRUE</value>
+      <value variable="s.bottle_ingr1[2]">FALSE</value>
+      <value variable="s.bottle_ingr2[2]">TRUE</value>
+    </state>
+    <!-- 9. stop moving, ingr2 filled incorrectly at 1 -->
+    <state id="9">
+      <value variable="s.bottle_present[0]">FALSE</value>
+      <value variable="s.bottle_ingr1[0]">FALSE</value>
+      <value variable="s.bottle_ingr2[0]">FALSE</value>
+
+      <value variable="s.bottle_present[1]">TRUE</value>
+      <value variable="s.bottle_ingr1[1]">TRUE</value>
+      <value variable="s.bottle_ingr2[1]">FALSE</value>
+
+      <value variable="s.bottle_present[2]">TRUE</value>
+      <value variable="s.bottle_ingr1[2]">FALSE</value>
+      <value variable="s.bottle_ingr2[2]">TRUE</value>
     </state>
   </node>
 </counter-example>
