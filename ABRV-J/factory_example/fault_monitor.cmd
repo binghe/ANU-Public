@@ -10,10 +10,14 @@ read_trace trace1.xml
 read_trace trace2.xml
 read_trace trace3.xml
 echo tests on trace 1
+show_property -n 0
 verify_property -n 0 1
+show_property -n 1
 verify_property -n 1 1
 echo tests on trace 2
+show_property -n 0
 verify_property -n 0 2
+show_property -n 1
 verify_property -n 1 2
 
 echo tests on trace 3
