@@ -7,7 +7,7 @@
 ## Tests related to the RV 2019 main paper:
 
  - `codegen_tests`: performance/correctness tests between symbol monitors and generated monitors.
- - `factory_example`: SMV modules and monitors of the factory model
+ - `factory_example_2`: SMV modules and monitors of the factory model (updated)
  - `smv_tests1/2/3`: some monitor tests based on model checking.
 
 ## Tests related to the RV 2019 tool paper:

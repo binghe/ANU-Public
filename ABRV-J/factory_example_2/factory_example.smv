@@ -1,0 +1,29 @@
+#include "Factory.smv"
+#include "Factory_model.smv"
+
+MODULE main
+
+VAR s: Factory;
+VAR m: Factory_model;
+
+LTLSPEC
+ G (!s.fault) -> G (s.bottle_present[2] -> (s.bottle_ingr1[2] & s.bottle_ingr2[2]))
+
+INVAR
+ s.move_belt <-> m.move_belt
+INVAR
+ s.new_bottle <-> m.new_bottle
+
+LTLSPEC
+ G ( !(m.bottle_present[2] -> (s.bottle_ingr1[2] & s.bottle_ingr2[2])) ->
+     !(s.bottle_present[2] -> (s.bottle_ingr1[2] & s.bottle_ingr2[2])) )
+
+LTLSPEC
+ G ( !(m.bottle_present[2] -> (s.bottle_ingr1[2] & s.bottle_ingr2[2])) ->
+     O s.fault )
+
+LTLSPEC
+ G ( (s.move_belt & s.new_bottle & X (!s.move_belt U (s.move_belt & X (!s.move_belt U (s.move_belt & X !(s.bottle_ingr1[2] & s.bottle_ingr2[2])))))) -> F s.fault)
+
+LTLSPEC
+ G ( (s.move_belt & s.new_bottle) -> X (s.move_belt V (s.move_belt -> X (s.move_belt V (s.move_belt -> X s.bottle_present[2])))))

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<counter-example type="0" id="1" desc="LTL Counterexample" >
+  <node>
+    <state id="1">
+      <value variable="s.bottle_present[0]">FALSE</value>
+      <value variable="s.bottle_ingr1[0]">FALSE</value>
+      <value variable="s.bottle_ingr2[1]">FALSE</value>
+      <value variable="s.bottle_present[2]">FALSE</value>
+      <value variable="s.bottle_ingr1[2]">FALSE</value>
+      <value variable="s.bottle_ingr2[2]">FALSE</value>
+    </state>
+    <state id="2">
+      <value variable="s.bottle_present[0]">TRUE</value>
+      <value variable="s.bottle_ingr1[0]">FALSE</value>
+      <value variable="s.bottle_ingr2[1]">FALSE</value>
+      <value variable="s.bottle_present[2]">FALSE</value>
+      <value variable="s.bottle_ingr1[2]">FALSE</value>
+      <value variable="s.bottle_ingr2[2]">FALSE</value>
+    </state>
+    <state id="3">
+      <value variable="s.bottle_present[0]">TRUE</value>
+      <value variable="s.bottle_ingr1[0]">FALSE</value>
+      <value variable="s.bottle_ingr2[1]">FALSE</value>
+      <value variable="s.bottle_present[2]">FALSE</value>
+      <value variable="s.bottle_ingr1[2]">FALSE</value>
+      <value variable="s.bottle_ingr2[2]">FALSE</value>
+    </state>
+    <state id="4">
+      <value variable="s.bottle_present[0]">FALSE</value>
+      <value variable="s.bottle_ingr1[0]">FALSE</value>
+      <value variable="s.bottle_ingr2[1]">FALSE</value>
+      <value variable="s.bottle_present[2]">FALSE</value>
+      <value variable="s.bottle_ingr1[2]">FALSE</value>
+      <value variable="s.bottle_ingr2[2]">FALSE</value>
+    </state>
+    <state id="5">
+      <value variable="s.bottle_present[0]">FALSE</value>
+      <value variable="s.bottle_ingr1[0]">FALSE</value>
+      <value variable="s.bottle_ingr2[1]">TRUE</value>
+      <value variable="s.bottle_present[2]">FALSE</value>
+      <value variable="s.bottle_ingr1[2]">FALSE</value>
+      <value variable="s.bottle_ingr2[2]">FALSE</value>
+    </state>
+    <state id="6">
+      <value variable="s.bottle_present[0]">TRUE</value>
+      <value variable="s.bottle_ingr1[0]">FALSE</value>
+      <value variable="s.bottle_ingr2[1]">FALSE</value>
+      <value variable="s.bottle_present[2]">TRUE</value>
+      <value variable="s.bottle_ingr1[2]">FALSE</value>
+      <value variable="s.bottle_ingr2[2]">TRUE</value>
+    </state>
+    <state id="7">
+      <value variable="s.bottle_present[0]">TRUE</value>
+      <value variable="s.bottle_ingr1[0]">FALSE</value>
+      <value variable="s.bottle_ingr2[1]">FALSE</value>
+      <value variable="s.bottle_present[2]">TRUE</value>
+      <value variable="s.bottle_ingr1[2]">FALSE</value>
+      <value variable="s.bottle_ingr2[2]">TRUE</value>
+    </state>
+    <state id="8">
+      <value variable="s.bottle_present[0]">FALSE</value>
+      <value variable="s.bottle_ingr1[0]">FALSE</value>
+      <value variable="s.bottle_ingr2[1]">FALSE</value>
+      <value variable="s.bottle_present[2]">FALSE</value>
+      <value variable="s.bottle_ingr1[2]">FALSE</value>
+      <value variable="s.bottle_ingr2[2]">FALSE</value>
+    </state>
+    <state id="9">
+      <value variable="s.bottle_present[0]">FALSE</value>
+      <value variable="s.bottle_ingr1[0]">FALSE</value>
+      <value variable="s.bottle_ingr2[1]">TRUE</value>
+      <value variable="s.bottle_present[2]">FALSE</value>
+      <value variable="s.bottle_ingr1[2]">FALSE</value>
+      <value variable="s.bottle_ingr2[2]">FALSE</value>
+    </state>
+    <state id="10">
+      <value variable="s.bottle_present[0]">FALSE</value>
+      <value variable="s.bottle_ingr1[0]">FALSE</value>
+      <value variable="s.bottle_ingr2[1]">FALSE</value>
+      <value variable="s.bottle_present[2]">TRUE</value>
+      <value variable="s.bottle_ingr1[2]">FALSE</value>
+      <value variable="s.bottle_ingr2[2]">TRUE</value>
+    </state>
+  </node>
+</counter-example>

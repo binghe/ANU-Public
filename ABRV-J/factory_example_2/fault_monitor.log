@@ -1,0 +1,104 @@
+*** This is NuRV 1.6.1 (compiled on Thu Sep  2 09:54:20 2021)
+*** Copyright (C) 2018-2021, Fondazione Bruno Kessler
+
+*** For more information on NuRV see https://es.fbk.eu/tools/nurv/
+*** Please report bugs to <nurv@fbk.eu>.
+
+*** This version of NuRV is linked to nuXmv 2.0.0.
+*** For more information on nuXmv see <https://nuxmv.fbk.eu>
+*** or email to <nuxmv@list.fbk.eu>.
+*** Copyright (C) 2014-2020, Fondazione Bruno Kessler
+
+*** This version of NuRV is linked to NuSMV 2.6.0.
+*** For more information on NuSMV see <http://nusmv.fbk.eu>
+*** or email to <nusmv-users@fbk.eu>.
+*** Copyright (C) 2010-2021, Fondazione Bruno Kessler
+
+*** This version of NuRV is linked to the CUDD library version 2.4.1
+*** Copyright (c) 1995-2004, Regents of the University of Colorado
+
+*** This version of NuRV is linked to the MiniSat SAT solver. 
+*** See http://minisat.se/MiniSat.html
+*** Copyright (c) 2003-2006, Niklas Een, Niklas Sorensson
+*** Copyright (c) 2007-2010, Niklas Sorensson
+
+*** This version of nuXmv is linked to MathSAT
+*** Copyright (C) 2009-2016 by Fondazione Bruno Kessler
+*** Copyright (C) 2009-2016 by University of Trento
+*** See http://mathsat.fbk.eu
+
+tests on trace 1 
+**** PROPERTY LIST [ Type, Status, Counter-example Number, Name ] ****
+--------------------------  PROPERTY LIST  -------------------------
+000 : G !(s.fault[0] | s.fault[1]) 
+  [LTL            Unchecked      N/A    N/A]
+1, unknown
+2, unknown
+3, false
+4, false
+5, false
+6, false
+7, false
+**** PROPERTY LIST [ Type, Status, Counter-example Number, Name ] ****
+--------------------------  PROPERTY LIST  -------------------------
+001 : G (s.bottle_present[2] -> (s.bottle_ingr1[2] & s.bottle_ingr2[2])) 
+  [LTL            Unchecked      N/A    N/A]
+1, unknown
+2, unknown
+3, unknown
+4, false
+5, false
+6, false
+7, false
+tests on trace 2 
+**** PROPERTY LIST [ Type, Status, Counter-example Number, Name ] ****
+--------------------------  PROPERTY LIST  -------------------------
+000 : G !(s.fault[0] | s.fault[1]) 
+  [LTL            Unchecked      N/A    N/A]
+1, unknown
+2, unknown
+3, unknown
+4, unknown
+5, false
+6, false
+7, false
+**** PROPERTY LIST [ Type, Status, Counter-example Number, Name ] ****
+--------------------------  PROPERTY LIST  -------------------------
+001 : G (s.bottle_present[2] -> (s.bottle_ingr1[2] & s.bottle_ingr2[2])) 
+  [LTL            Unchecked      N/A    N/A]
+1, unknown
+2, unknown
+3, unknown
+4, unknown
+5, unknown
+6, false
+7, false
+tests on trace 3 (partially observable) 
+**** PROPERTY LIST [ Type, Status, Counter-example Number, Name ] ****
+--------------------------  PROPERTY LIST  -------------------------
+000 : G !(s.fault[0] | s.fault[1]) 
+  [LTL            Unchecked      N/A    N/A]
+unknown
+unknown
+false
+unknown
+unknown
+unknown
+false
+unknown
+unknown
+unknown
+**** PROPERTY LIST [ Type, Status, Counter-example Number, Name ] ****
+--------------------------  PROPERTY LIST  -------------------------
+001 : G (s.bottle_present[2] -> (s.bottle_ingr1[2] & s.bottle_ingr2[2])) 
+  [LTL            Unchecked      N/A    N/A]
+unknown
+unknown
+unknown
+false
+false
+false
+false
+false
+false
+false
