@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<counter-example type="0" id="1" desc="LTL Counterexample">
+  <node><state id="1">
+    <value variable="p">TRUE</value>
+    <value variable="i">116</value>
+    <value variable="x">-0.141</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="2">
+    <value variable="p">FALSE</value>
+    <value variable="i">64</value>
+    <value variable="x">-0.213</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="3">
+    <value variable="p">TRUE</value>
+    <value variable="i">-54</value>
+    <value variable="x">-0.325</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="4">
+    <value variable="p">FALSE</value>
+    <value variable="i">-173</value>
+    <value variable="x">0.387</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="5">
+    <value variable="p">TRUE</value>
+    <value variable="i">499</value>
+    <value variable="x">0.37</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+</counter-example>

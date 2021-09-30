@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<counter-example type="0" id="9" desc="LTL Counterexample">
+  <node><state id="1">
+    <value variable="p">TRUE</value>
+    <value variable="i">-7</value>
+    <value variable="x">-0.098</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="2">
+    <value variable="p">FALSE</value>
+    <value variable="i">184</value>
+    <value variable="x">-0.311</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="3">
+    <value variable="p">TRUE</value>
+    <value variable="i">-336</value>
+    <value variable="x">-0.078</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="4">
+    <value variable="p">TRUE</value>
+    <value variable="i">-332</value>
+    <value variable="x">-0.16</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="5">
+    <value variable="p">FALSE</value>
+    <value variable="i">-61</value>
+    <value variable="x">-0.429</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="6">
+    <value variable="p">FALSE</value>
+    <value variable="i">-494</value>
+    <value variable="x">0.173</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="7">
+    <value variable="p">FALSE</value>
+    <value variable="i">-116</value>
+    <value variable="x">0.35</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="8">
+    <value variable="p">FALSE</value>
+    <value variable="i">-162</value>
+    <value variable="x">-0.097</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="9">
+    <value variable="p">TRUE</value>
+    <value variable="i">-39</value>
+    <value variable="x">0.438</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="10">
+    <value variable="p">TRUE</value>
+    <value variable="i">-60</value>
+    <value variable="x">-0.264</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="11">
+    <value variable="p">FALSE</value>
+    <value variable="i">308</value>
+    <value variable="x">-0.478</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="12">
+    <value variable="p">TRUE</value>
+    <value variable="i">341</value>
+    <value variable="x">-0.004</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="13">
+    <value variable="p">FALSE</value>
+    <value variable="i">-120</value>
+    <value variable="x">-0.16</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="14">
+    <value variable="p">FALSE</value>
+    <value variable="i">449</value>
+    <value variable="x">-0.361</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="15">
+    <value variable="p">FALSE</value>
+    <value variable="i">-472</value>
+    <value variable="x">-0.283</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="16">
+    <value variable="p">TRUE</value>
+    <value variable="i">380</value>
+    <value variable="x">0.048</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="17">
+    <value variable="p">FALSE</value>
+    <value variable="i">178</value>
+    <value variable="x">-0.157</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="18">
+    <value variable="p">FALSE</value>
+    <value variable="i">100</value>
+    <value variable="x">-0.277</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="19">
+    <value variable="p">TRUE</value>
+    <value variable="i">157</value>
+    <value variable="x">-0.18</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="20">
+    <value variable="p">FALSE</value>
+    <value variable="i">-144</value>
+    <value variable="x">-0.427</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="21">
+    <value variable="p">TRUE</value>
+    <value variable="i">-42</value>
+    <value variable="x">-0.266</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="22">
+    <value variable="p">FALSE</value>
+    <value variable="i">103</value>
+    <value variable="x">-0.246</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="23">
+    <value variable="p">TRUE</value>
+    <value variable="i">-231</value>
+    <value variable="x">-0.207</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="24">
+    <value variable="p">FALSE</value>
+    <value variable="i">-125</value>
+    <value variable="x">0.428</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="25">
+    <value variable="p">TRUE</value>
+    <value variable="i">-112</value>
+    <value variable="x">0.438</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="26">
+    <value variable="p">TRUE</value>
+    <value variable="i">-294</value>
+    <value variable="x">-0.277</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="27">
+    <value variable="p">TRUE</value>
+    <value variable="i">393</value>
+    <value variable="x">-0.424</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="28">
+    <value variable="p">FALSE</value>
+    <value variable="i">359</value>
+    <value variable="x">0.435</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="29">
+    <value variable="p">FALSE</value>
+    <value variable="i">68</value>
+    <value variable="x">-0.091</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="30">
+    <value variable="p">TRUE</value>
+    <value variable="i">181</value>
+    <value variable="x">0.489</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="31">
+    <value variable="p">TRUE</value>
+    <value variable="i">179</value>
+    <value variable="x">0.388</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="32">
+    <value variable="p">FALSE</value>
+    <value variable="i">-22</value>
+    <value variable="x">0.449</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="33">
+    <value variable="p">FALSE</value>
+    <value variable="i">284</value>
+    <value variable="x">-0.202</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="34">
+    <value variable="p">FALSE</value>
+    <value variable="i">-123</value>
+    <value variable="x">-0.147</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="35">
+    <value variable="p">FALSE</value>
+    <value variable="i">-406</value>
+    <value variable="x">0.208</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="36">
+    <value variable="p">TRUE</value>
+    <value variable="i">342</value>
+    <value variable="x">0.088</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="37">
+    <value variable="p">FALSE</value>
+    <value variable="i">-343</value>
+    <value variable="x">0.096</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="38">
+    <value variable="p">TRUE</value>
+    <value variable="i">421</value>
+    <value variable="x">0.3</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="39">
+    <value variable="p">TRUE</value>
+    <value variable="i">163</value>
+    <value variable="x">0.402</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="40">
+    <value variable="p">TRUE</value>
+    <value variable="i">-233</value>
+    <value variable="x">-0.157</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="41">
+    <value variable="p">TRUE</value>
+    <value variable="i">-426</value>
+    <value variable="x">-0.404</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="42">
+    <value variable="p">TRUE</value>
+    <value variable="i">84</value>
+    <value variable="x">0.064</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="43">
+    <value variable="p">TRUE</value>
+    <value variable="i">-221</value>
+    <value variable="x">0.066</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="44">
+    <value variable="p">TRUE</value>
+    <value variable="i">211</value>
+    <value variable="x">0.179</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="45">
+    <value variable="p">TRUE</value>
+    <value variable="i">-288</value>
+    <value variable="x">-0.065</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="46">
+    <value variable="p">FALSE</value>
+    <value variable="i">221</value>
+    <value variable="x">0.445</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="47">
+    <value variable="p">FALSE</value>
+    <value variable="i">261</value>
+    <value variable="x">0.174</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+  <node><state id="48">
+    <value variable="p">FALSE</value>
+    <value variable="i">116</value>
+    <value variable="x">0.052</value>
+    <value variable="s">FALSE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="49">
+    <value variable="p">TRUE</value>
+    <value variable="i">476</value>
+    <value variable="x">0.388</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">TRUE</value>
+    <value variable="z">TRUE</value>
+  </state></node>
+  <node><state id="50">
+    <value variable="p">FALSE</value>
+    <value variable="i">-207</value>
+    <value variable="x">-0.155</value>
+    <value variable="s">TRUE</value>
+    <value variable="t">FALSE</value>
+    <value variable="z">FALSE</value>
+  </state></node>
+</counter-example>

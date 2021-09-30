@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<counter-example type="0" id="1" desc="LTL Counterexample">
+  <node><state id="1">
+    <value variable="temp">0</value>
+    <value variable="switch_on">TRUE</value>
+  </state></node>
+  <node><state id="2">
+    <value variable="temp">20</value>
+    <value variable="switch_on">FALSE</value>
+  </state></node>
+  <node><state id="3">
+    <value variable="temp">10</value>
+    <value variable="switch_on">TRUE</value>
+  </state></node>
+</counter-example>

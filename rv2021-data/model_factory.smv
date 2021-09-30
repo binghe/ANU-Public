@@ -1,0 +1,8 @@
+#include "factory.smv"
+
+MODULE main
+
+VAR s: Factory;
+
+LTLSPEC
+    G ((s.bottle_present[2] & !s.move_belt) -> (s.bottle_ingr1[2] & s.bottle_ingr2[2]))
