@@ -48,6 +48,10 @@ input diccolors;
 
 % The TEX macro is useful when using MP variables in TeX/LaTeX labels
 input TEX;
+TEXPRE ("\documentclass[12pt]{book}" &
+        "\usepackage{lmodern}\usepackage{amsmath}\usepackage{amssymb}" &
+        "\begin{document}");
+TEXPOST("\end{document}");
 
 %% LaTeX package settings (metafun only)
 verbatimtex
@@ -56,27 +60,13 @@ verbatimtex
   \documentclass[12pt]{book}
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{lmodern}
   \usepackage{amsmath}
   \usepackage{amssymb}
-  \usepackage{mathrsfs}
-  \usepackage{mathtools}
-  \usepackage{bbm}
-  \usepackage{stmaryrd}
-  \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
-  % \cupdot (the best definition)
-  \newcommand{\cupdot}{\mathbin{\mathaccent\cdot\cup}}
-  \newcommand{\eqbydef}{\ensuremath{{\,\dot{=}\,}}}
-  % ABRV-related symbols
-  \newcommand{\topa}{\top^\mathrm{a}}
-  \newcommand{\bota}{\bot^\mathrm{a}}
-  \newcommand{\unknown}{\,?\,}
   \begin{document}
 etex
 
 %% Global Parameters
 show_empty_boxes := true;
-defaultcolormodel := rgbmodel; % nomodel,greyscalemodel,rgbmodel,cmykmodel
 
 %% General Macros
 
