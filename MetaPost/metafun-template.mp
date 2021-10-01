@@ -46,6 +46,9 @@ input mpcolornames;
 % [local package] see "DIC Color Guide"
 input diccolors;
 
+% The TEX macro is useful when using MP variables in TeX/LaTeX labels
+input TEX;
+
 %% LaTeX package settings (metafun only)
 verbatimtex
   % The following line is not necessary, since we use % !MPOST
