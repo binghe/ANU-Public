@@ -1,7 +1,23 @@
-;;; IF-LET* macro for Emacs 24 and 25
+;;; IF-LET* macro for Emacs 25 and prior versions (down to 19.x)
+;;;
 ;;; copied from https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/emacs-lisp/subr-x.el
 
-(require 'subr-x)
+;; Copyright (C) 2013-2021 Free Software Foundation, Inc.
+
+;; GNU Emacs is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; GNU Emacs is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
+
+(eval-when-compile (require 'subr-x))
 
 (defmacro internal--thread-argument (first? &rest forms)
   "Internal implementation for `thread-first' and `thread-last'.
