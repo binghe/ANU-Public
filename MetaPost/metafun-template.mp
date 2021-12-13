@@ -46,10 +46,11 @@ input mpcolornames;
 % [local package] see "DIC Color Guide"
 input diccolors;
 
-% The TEX macro is useful when using MP variables in TeX/LaTeX labels
+% The TEX macro is useful when using MP variables in TeX/LaTeX labels.
+% It is slow, but more general than the standard btex..etex construction.
 input TEX;
 TEXPRE ("\documentclass[12pt]{book}" &
-        "\usepackage{lmodern}\usepackage{amsmath}\usepackage{amssymb}" &
+        "\usepackage{amsmath}\usepackage{amssymb}" &
         "\begin{document}");
 TEXPOST("\end{document}");
 
@@ -81,7 +82,6 @@ endfig;
 % This ending part is actually not necessary
 verbatimtex
   \end{document}
-  \end
 etex
 
 end.
