@@ -1,6 +1,6 @@
-;;; IF-LET* macro(s) for Emacs 25 and prior versions (down to 19.x)
-;;;
-;;; copied from https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/emacs-lisp/subr-x.el
+;; subr-y.el --- IF-LET*, etc. for Emacs 25 and prior versions -*- lexical-binding: t; -*-
+;;
+;; copied from https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/emacs-lisp/subr-x.el
 
 ;; Copyright (C) 2013-2021 Free Software Foundation, Inc.
 
@@ -17,7 +17,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
 
-(eval-when-compile (require 'subr-x))
+(require 'subr-x)
 
 (defmacro internal--thread-argument (first? &rest forms)
   "Internal implementation for `thread-first' and `thread-last'.
@@ -115,6 +115,7 @@ This is like `if-let' but doesn't handle a VARLIST of the form
              ,then
            ,@else))
     `(let* () ,then)))
+
 (defmacro when-let* (varlist &rest body)
   "Bind variables according to VARLIST and conditionally evaluate BODY.
 This is like `when-let' but doesn't handle a VARLIST of the form
@@ -170,5 +171,3 @@ If all are non-nil, return the value of the last form in BODY.
 The variable list SPEC is the same as in `if-let'."
   (declare (indent 1) (debug if-let))
   (list 'if-let spec (macroexp-progn body)))
-
-(provide 'subr-y)
