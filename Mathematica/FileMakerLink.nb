@@ -1,0 +1,918 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     35238,        910]
+NotebookOptionsPosition[     23813,        687]
+NotebookOutlinePosition[     24628,        712]
+CellTagsIndexPosition[     24585,        709]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["A FileMaker Link for Mathematica", "Title",
+ CellChangeTimes->{
+  3.874465988112649*^9, {3.874470674745764*^9, 3.874470675128353*^9}},
+ TextAlignment->Center,ExpressionUUID->"1db2fb4b-d0c1-42da-b603-f0ada540a541"],
+
+Cell["by Chun Tian (binghe)", "Subsubtitle",
+ CellChangeTimes->{{3.874465991026457*^9, 3.8744659965634737`*^9}, {
+  3.8744683079520893`*^9, 3.8744683091771927`*^9}},
+ TextAlignment->Center,ExpressionUUID->"e5f1cfa0-2738-4359-a42a-f23632c160fa"],
+
+Cell["\<\
+This notebook contains a package for connecting to local FileMaker Pro \
+databases.\
+\>", "Text",
+ CellChangeTimes->{{3.874468508870584*^9, 
+  3.874468530837674*^9}},ExpressionUUID->"f282cf3c-5529-4d6f-a047-\
+6a0b8c4825d2"],
+
+Cell[CellGroupData[{
+
+Cell["Reference", "Section",ExpressionUUID->"3c45f271-299e-4e1d-a316-37981148703c"],
+
+Cell[CellGroupData[{
+
+Cell["Title", "Subsubsection",ExpressionUUID->"2fec9e34-e0c4-44b5-8901-4e57cb3f4f0b"],
+
+Cell[TextData[StyleBox["FileMaker Link for Mathematica",
+ FontSlant->"Italic"]], "Text",
+ CellChangeTimes->{
+  3.874468492548506*^9},ExpressionUUID->"d4c9a130-8afe-411c-830c-\
+96c04b6dea38"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Author", "Subsubsection",ExpressionUUID->"84ca489c-b4e5-49bc-8fe1-4560f341b183"],
+
+Cell["Chun Tian (binghe)", "Text",
+ CellChangeTimes->{{3.874468494960556*^9, 
+  3.874468500130144*^9}},ExpressionUUID->"f5bb71d4-b930-4ef0-81f2-\
+98827556c845"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Summary", "Subsubsection",ExpressionUUID->"204e5c6e-867e-4ea5-b609-29e99813f036"],
+
+Cell["\<\
+This notebook contains a package for connecting to local FileMaker Pro \
+databases.\
+\>", "Text",
+ CellChangeTimes->{
+  3.874468537919299*^9},ExpressionUUID->"13431ab2-a096-43b4-9b1c-\
+ce3bf00c6a64"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Copyright", "Subsubsection",ExpressionUUID->"c5daf57a-10d3-4263-92c8-fe2d3bf1ff4d"],
+
+Cell[TextData[{
+ "\[Copyright] Copyright 2022, Chun Tian (binghe)",
+ StyleBox["y",
+  FontSlant->"Italic"],
+ ".\n\nPermission is granted to distribute this file for any purpose except \
+for inclusion in commercial software or program collections. This copyright \
+notice must remain intact.."
+}], "Text",
+ CellChangeTimes->{{3.874468540738551*^9, 
+  3.87446854894734*^9}},ExpressionUUID->"f96e6bc6-46bd-4739-bd0d-\
+072ae47c1cc6"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Notebook Version", "Subsubsection",ExpressionUUID->"1df53f59-fcb0-47e8-aab5-523755b288ca"],
+
+Cell["1.0", "Text",ExpressionUUID->"34963ff0-e5c8-4844-b0df-187973afc6fe"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " Version"
+}], "Subsubsection",ExpressionUUID->"571ed42c-9ba7-40d3-a826-f67fd047bd7f"],
+
+Cell["13.0", "Text",
+ CellChangeTimes->{
+  3.874468557990458*^9},ExpressionUUID->"eb427278-9c19-4b0e-8d54-\
+37dbca3262ff"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["History", "Subsubsection",ExpressionUUID->"0b4be3a8-6a89-4e72-8c95-c34bdebc7cca"],
+
+Cell[TextData[{
+ "Version 1.0 for ",
+ StyleBox["Programming in ",
+  FontSlant->"Italic"],
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", 3rd edition."
+}], "Text",ExpressionUUID->"38a2a4da-d90c-4bed-8d57-1e7d6fbf45c6"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "Subsubsection",ExpressionUUID->"8b8d05a5-948c-40f5-9b6a-d97b3d7c256c"],
+
+Cell["database, notebooks, packages", "Text",
+ CellChangeTimes->{{3.87446856932034*^9, 
+  3.874468579030849*^9}},ExpressionUUID->"c9e29426-bbf7-4f31-8b49-\
+7bbf7599d6cc"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Source", "Subsubsection",ExpressionUUID->"2365f231-4b09-46e9-a704-acae92cdcb54"],
+
+Cell[TextData[{
+ "Maeder, R. ",
+ StyleBox["Programming in ",
+  FontSlant->"Italic"],
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ", 3rd ed. Addison-Wesley, 1996."
+}], "Text",ExpressionUUID->"ebb32696-fbec-4e61-879a-62931698ae45"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Warnings", "Subsubsection",ExpressionUUID->"7ad9a9ee-9a26-47a9-8e35-cd1d67b1ca80"],
+
+Cell[TextData[StyleBox["description of global effects, incompatibilities",
+ FontSlant->"Italic"]], "Text",ExpressionUUID->"fab2dbb7-4af2-4103-aa2e-\
+8ca0a2f2daf9"],
+
+Cell[TextData[{
+ "Note: all cells marked as \"InitializationCell\" will be written to the \
+Auto-Save package. This package can then be read in programs that use it with \
+",
+ StyleBox["Needs[\"FileMakerLink\"]", "Input"],
+ ". Cells not intended to belong to the package should not have this property."
+}], "Text",
+ CellChangeTimes->{{3.874468592908997*^9, 
+  3.874468595574646*^9}},ExpressionUUID->"19aea85f-b8ba-4db5-be8c-\
+dd9ef62f7b3e"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Limitation", "Subsubsection",ExpressionUUID->"5f6e3680-b7e3-4358-8261-42ac3077e5fe"],
+
+Cell[TextData[StyleBox["special cases not handled, known problems",
+ FontSlant->"Italic"]], "Text",ExpressionUUID->"62f13a41-26a2-40c1-9998-\
+5a8378a893a4"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Discussion", "Subsubsection",ExpressionUUID->"bef94b33-7340-4c32-9fb5-61744bd4ae2d"],
+
+Cell[TextData[StyleBox["description of algorithm, information for experts",
+ FontSlant->"Italic"]], "Text",ExpressionUUID->"0266c93e-769c-48bf-a744-\
+5e6956a8d081"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Requirements", "Subsubsection",ExpressionUUID->"7986357c-0405-48a9-9049-e94207db60e0"],
+
+Cell[TextData[StyleBox["Context`FileMakerLink`",
+ FontFamily->"Courier",
+ FontWeight->"Bold",
+ FontSlant->"Italic"]], "Text",
+ CellChangeTimes->{{3.8744686058044033`*^9, 
+  3.874468608215208*^9}},ExpressionUUID->"70f584bb-230b-496b-8363-\
+3c090b2b127d"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Setup", "Section",ExpressionUUID->"4e159d34-3157-43a2-8a99-9f2ad2bfd50c"],
+
+Cell["\<\
+This section contains commands needed to load the corresponding package. It \
+may be omitted for notebooks that are used only to generate an auto-save \
+package.\
+\>", "Text",ExpressionUUID->"7b8dea05-b7f7-4888-99ef-97921bf980da"],
+
+Cell[CellGroupData[{
+
+Cell["Install the JDBC driver", "Subsection",
+ CellChangeTimes->{{3.874468331220278*^9, 3.8744683366010237`*^9}, {
+   3.8744686148666973`*^9, 3.8744686151509933`*^9}, 
+   3.874468650801384*^9},ExpressionUUID->"7e7a88c3-1c5f-41bf-a7b6-\
+1846a2692a60"],
+
+Cell[TextData[{
+ "Make sure that ",
+ StyleBox["fmjdbc.jar", "Code"],
+ " is copied into ",
+ StyleBox["$UserBaseDirectory/Applications/Oracle/Java", "Code"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.87446836652359*^9, 
+  3.8744683829734697`*^9}},ExpressionUUID->"ae4c70d8-0537-483f-8de2-\
+ac0825a881e5"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Read in the package", "Subsection",
+ CellChangeTimes->{
+  3.8744686493725224`*^9},ExpressionUUID->"b216b78c-e184-4e26-86d3-\
+0f59d303d40f"],
+
+Cell[TextData[{
+ "The code is contained in the package ",
+ StyleBox["FileMakerLink",
+  FontFamily->"Courier",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ StyleBox[".m",
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ ", which is simply read in here."
+}], "Text",
+ CellChangeTimes->{{3.87446609159461*^9, 
+  3.8744660938350563`*^9}},ExpressionUUID->"99205f5a-ce2e-4a5c-b49f-\
+87f722fb38b5"],
+
+Cell["Needs[\"FileMakerLink`\"]", "Input",
+ CellChangeTimes->{3.874466082870418*^9},
+ CellLabel->"In[15]:=",ExpressionUUID->"8bb5ecb5-323c-4701-8daf-5388cdcc3e0b"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Interface", "Section",
+ InitializationCell->
+  True,ExpressionUUID->"0df96cec-11d6-4ed7-ba3f-ddfa38159f2a"],
+
+Cell["\<\
+This part declares the publicly visible functions, options, and values.\
+\>", "Text",
+ InitializationCell->
+  True,ExpressionUUID->"aa163272-8633-40b2-91cf-428b9709f674"],
+
+Cell[CellGroupData[{
+
+Cell["Set up the package context, including public imports", "Subsection",
+ InitializationCell->
+  True,ExpressionUUID->"9757f880-a40c-4b2d-9fa9-91ec4bfed96b"],
+
+Cell["BeginPackage[\"FileMakerLink`\", {\"DatabaseLink`\"}]", "Input",
+ InitializationCell->True,
+ CellChangeTimes->{3.874466141862426*^9},
+ CellLabel->"In[16]:=",ExpressionUUID->"804dd312-f405-42a3-9a61-0d920f31e6cd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Usage messages for the exported functions and the context itself\
+\>", "Subsection",
+ InitializationCell->
+  True,ExpressionUUID->"e657ee7a-84fa-44fd-a609-0fb7697aa4b7"],
+
+Cell["\<\
+FileMakerLink::usage = \"FileMakerLink.m is a package for connecting to \
+FileMaker Pro databases.\"\
+\>", "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.874466152865467*^9, 3.8744661856488943`*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"474bad8d-d2c5-47b1-8d1c-5403e0dfed88"],
+
+Cell["\<\
+OpenFMPConnection::usage =
+  \"OpenFMPConnection[dbname, opts ...] opens a connection to a (local) \
+FileMaker Pro database.\"\
+\>", "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.874466196525033*^9, 3.874466200819906*^9}, {
+  3.874469351119515*^9, 3.874469366534956*^9}, {3.874469405763102*^9, 
+  3.874469407079666*^9}, {3.8744725383727293`*^9, 3.8744725410908537`*^9}, {
+  3.8744749317692327`*^9, 3.87447493303084*^9}, {3.874475546389089*^9, 
+  3.874475547081353*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"64eb17f5-6f85-4eec-a6f0-4e06b69b4ef2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Hostname", "::", "usage"}], " ", "=", " ", 
+  "\"\<Hostname is an option of OpenFMPConnection[]\>\""}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.874469489444936*^9, 3.874469514703096*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"b142abcd-f718-4003-ab9d-d65389d6f52e"],
+
+Cell["\<\
+CloseFMPConnection::usage = \"CloseFMPConnection[conn] closes the FileMaker \
+Pro database connection.\"\
+\>", "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.8744662119153633`*^9, 3.874466215099284*^9}, {
+  3.8744693729713163`*^9, 3.874469377876896*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"8f330de9-f084-40f4-90e5-30a029a69e37"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Implementation", "Section",
+ InitializationCell->
+  True,ExpressionUUID->"feed5f06-01ab-478b-a9ef-222c29df52b9"],
+
+Cell["\<\
+This part contains the actual definitions and any auxiliary functions that \
+should not be visible outside.\
+\>", "Text",ExpressionUUID->"5217f3da-a713-421f-8b85-56816fc08eff"],
+
+Cell[CellGroupData[{
+
+Cell["Begin the private context (implementation part)", "Subsection",
+ InitializationCell->
+  True,ExpressionUUID->"f587ca75-8600-4b08-a0cd-11f9e933333a"],
+
+Cell["Begin[\"`Private`\"]", "Input",
+ InitializationCell->True,
+ CellLabel->"In[21]:=",ExpressionUUID->"5ca275bc-b541-418e-94cb-f57410362eb7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Unprotect any system functions for which definitions will be made\
+\>", "Subsection",
+ InitializationCell->
+  True,ExpressionUUID->"d7838797-4c43-477b-a212-71606f25eafc"],
+
+Cell["\<\
+protected = Unprotect[ OpenFMPConnection, CloseFMPConnection ]\
+\>", "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.874469037520892*^9, 3.874469042651805*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"3f946233-2e36-4649-bff2-b1a80d2c1500"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Definition of the exported functions", "Subsection",
+ InitializationCell->
+  True,ExpressionUUID->"96d3d5f0-244c-4993-83fb-5d2d290af60b"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["OpenFMPConnection[]", "Input"]], "Subsubsection",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.874466382452956*^9},ExpressionUUID->"1b8b99dc-99b7-4591-96d9-\
+8e1018209174"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Options", "[", "OpenFMPConnection", "]"}], " ", "=", " ", 
+  RowBox[{"Append", "[", 
+   RowBox[{
+    RowBox[{"Options", "[", "OpenSQLConnection", "]"}], ",", 
+    RowBox[{"Hostname", " ", "->", " ", "\"\<localhost\>\""}]}], 
+   "]"}]}]], "Code",
+ CellChangeTimes->{{3.874469522060892*^9, 3.874469530497201*^9}, {
+  3.8744699093253593`*^9, 3.8744699167026*^9}, {3.874473523571953*^9, 
+  3.8744735332802963`*^9}, {3.874477366304914*^9, 3.874477386947534*^9}, {
+  3.87447750304364*^9, 3.8744775256066523`*^9}, {3.87447782902105*^9, 
+  3.874477831085373*^9}, {3.8744779630272617`*^9, 3.874477966963808*^9}, {
+  3.874478094190545*^9, 3.8744781341445208`*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"f343e745-d7e7-44bb-a37f-8b862ca367de"],
+
+Cell["\<\
+OpenFMPConnection[ dbname_, opts : OptionsPattern[] ] :=
+\tModule[{hostname, jdbcURL, sqlOpts},
+\t\thostname = OptionValue[Hostname];
+\t\tjdbcURL = \"jdbc:filemaker://\" <> hostname <> \"/\" <> dbname;
+\t\tsqlOpts = Append[FilterRules[{opts}, Options[OpenSQLConnection]],
+\t\t\t\t\t     \"Name\" -> \"FMP\"];
+\t\tOpenSQLConnection[JDBC[\"com.filemaker.jdbc.Driver\", jdbcURL], sqlOpts]
+\t]\
+\>", "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.874466314896634*^9, 3.8744663772987432`*^9}, 
+   3.874469081898314*^9, {3.874469268092271*^9, 3.874469278623595*^9}, {
+   3.874469598878965*^9, 3.874469809937274*^9}, {3.874470281601596*^9, 
+   3.87447028211481*^9}, {3.874470714889283*^9, 3.874470754839387*^9}, {
+   3.8744708789367237`*^9, 3.8744708982090073`*^9}, {3.874470984844428*^9, 
+   3.874470994143547*^9}, {3.8744723473282013`*^9, 3.874472366187298*^9}, {
+   3.874472499640082*^9, 3.87447251083349*^9}, {3.874472615785111*^9, 
+   3.8744726317992496`*^9}, {3.8744727686349087`*^9, 3.874472771318165*^9}, {
+   3.874472814967331*^9, 3.874472843885929*^9}, {3.874472923469211*^9, 
+   3.874472924576478*^9}, {3.874473160232374*^9, 3.8744731638242073`*^9}, {
+   3.874473571703607*^9, 3.874473572693117*^9}, {3.874473614641897*^9, 
+   3.874473618150312*^9}, {3.874473678004375*^9, 3.874473711064904*^9}, {
+   3.874473774257827*^9, 3.874473776662669*^9}, {3.8744738142757893`*^9, 
+   3.8744738382476597`*^9}, {3.874473921040629*^9, 3.874473933344199*^9}, {
+   3.874473994829167*^9, 3.874474042459403*^9}, {3.87447408488929*^9, 
+   3.8744741019095984`*^9}, {3.874474134196114*^9, 3.87447414858047*^9}, {
+   3.8744742075562057`*^9, 3.874474244241239*^9}, {3.874474305520816*^9, 
+   3.874474312477509*^9}, {3.874474384680499*^9, 3.874474413714966*^9}, {
+   3.874474446231744*^9, 3.8744744725516376`*^9}, {3.874474530887554*^9, 
+   3.8744745709273*^9}, {3.874474624865892*^9, 3.874474627041389*^9}, {
+   3.874474672661971*^9, 3.87447475195444*^9}, {3.874474829834736*^9, 
+   3.874474841965172*^9}, {3.874474898872127*^9, 3.874474912291686*^9}, {
+   3.8744749788283*^9, 3.874474989565723*^9}, {3.874475035170513*^9, 
+   3.874475078556383*^9}, {3.874475193626589*^9, 3.874475257664474*^9}, {
+   3.874475298939207*^9, 3.874475313067382*^9}, {3.874475346446822*^9, 
+   3.874475368650341*^9}, 3.874475403549251*^9, {3.874475535240737*^9, 
+   3.874475537878203*^9}, {3.8744767452430763`*^9, 3.874476765057781*^9}, {
+   3.874477125068439*^9, 3.874477149182461*^9}, {3.8744772012962112`*^9, 
+   3.874477208231119*^9}, {3.874477563169396*^9, 3.874477569392601*^9}, {
+   3.874478295283701*^9, 3.874478296840042*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"593dc382-93fe-4c2d-ad70-25740af7864b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["CloseFMPConnection[]", "Input"]], "Subsubsection",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.8744663996548843`*^9},ExpressionUUID->"aa9e06ed-b50b-4d9d-81b3-\
+057b93ef6906"],
+
+Cell["CloseFMPConnection[conn_] := CloseSQLConnection[conn]", "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.874466391353764*^9, 3.874466395369359*^9}, 
+   3.8744690843376617`*^9},
+ CellLabel->"In[25]:=",ExpressionUUID->"3fe4e7da-9129-481c-abe4-4deef2bdfa67"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Restore protection of system symbols", "Subsection",
+ InitializationCell->
+  True,ExpressionUUID->"8224d971-d6f8-4ca4-bc2d-7090a3e98961"],
+
+Cell["Protect[ Evaluate[protected] ]", "Input",
+ InitializationCell->True,
+ CellLabel->"In[26]:=",ExpressionUUID->"2b1e9f22-9348-455d-99f5-cd99de6a6554"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["End the private context", "Subsection",
+ InitializationCell->
+  True,ExpressionUUID->"d44b2fe1-17ea-4bd6-95b2-eab078bb191b"],
+
+Cell["End[ ]", "Input",
+ InitializationCell->True,
+ CellLabel->"In[27]:=",ExpressionUUID->"b9c13721-803e-48f7-9566-1698144a5e67"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Epilog", "Section",
+ InitializationCell->
+  True,ExpressionUUID->"8c218c59-5299-48ce-8b1a-b883a28220cd"],
+
+Cell["This section protects exported symbols and ends the package.", "Text",ExpressionUUID->"eca8b8da-2133-45be-946d-37bc738188d7"],
+
+Cell[CellGroupData[{
+
+Cell["Protect exported symbol", "Subsection",
+ InitializationCell->
+  True,ExpressionUUID->"4e795261-3376-47d4-8d83-3baa2c423be8"],
+
+Cell[TextData[{
+ "Protect[ ",
+ StyleBox["OpenFMPConnection", "Input"],
+ ", CloseFMPConnection ]"
+}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.874466434051903*^9, 3.8744664389731913`*^9}},
+ CellLabel->"In[28]:=",ExpressionUUID->"a853b015-0a74-48c6-b954-4b6b8df4f77f"],
+
+Cell["Alternative: protect all exported symbols", "Text",
+ InitializationCell->
+  True,ExpressionUUID->"5059bf0d-be9d-4745-9371-70af9d342cb2"],
+
+Cell["Protect[Evaluate[$Context <> \"*\"]]", "Input",
+ Evaluatable->False,
+ InitializationCell->
+  True,ExpressionUUID->"f422228b-1fa7-462a-b9bc-cfa0a29f5efa"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["End the package context", "Subsection",
+ InitializationCell->
+  True,ExpressionUUID->"cb2e0497-2f7c-4aea-bcce-7c2b4f1cf730"],
+
+Cell["EndPackage[ ]", "Input",
+ InitializationCell->True,
+ CellLabel->"In[29]:=",ExpressionUUID->"4aacbd4d-7d57-422d-8807-b0042094024a"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Examples, Tests", "Section",ExpressionUUID->"3519a4af-1495-409f-b317-ce2c386f5f88"],
+
+Cell[TextData[StyleBox["Examples, tests for the use of the package can go \
+here.",
+ FontSlant->"Italic"]], "Text",ExpressionUUID->"2635e9b9-d50b-4b3b-979e-\
+9677d5853e46"],
+
+Cell[CellGroupData[{
+
+Cell["Connect to a database", "Subsection",
+ CellChangeTimes->{{3.874467314190565*^9, 
+  3.874467328596902*^9}},ExpressionUUID->"b23564a7-30ff-446b-b6cf-\
+9501c4390d15"],
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "OpenFMPConnection", "]"}]], "Input",
+ CellChangeTimes->{{3.874470178497217*^9, 3.874470182803513*^9}},
+ CellLabel->"In[30]:=",ExpressionUUID->"548968fe-d00b-4ff4-b4d9-0c33cfa28b3c"],
+
+Cell[BoxData[
+ RowBox[{"conn", "=", 
+  RowBox[{"OpenFMPConnection", "[", 
+   RowBox[{"\"\<AV\>\"", ",", 
+    RowBox[{"Username", "->", "\"\<readonly\>\""}], ",", 
+    RowBox[{"Password", "->", "\"\<\>\""}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.874466700928652*^9, 3.8744667186215963`*^9}, {
+   3.8744710242052507`*^9, 3.8744710342919083`*^9}, {3.8744718106996098`*^9, 
+   3.8744718138422747`*^9}, {3.874472596359865*^9, 3.874472599104896*^9}, {
+   3.874472941178636*^9, 3.874472978162943*^9}, {3.8744732793470383`*^9, 
+   3.8744732800198193`*^9}, {3.8744735964513617`*^9, 3.874473598587562*^9}, {
+   3.8744742852827883`*^9, 3.874474295662456*^9}, {3.874474349831607*^9, 
+   3.874474371863625*^9}, {3.8744746086075897`*^9, 3.87447461576762*^9}, 
+   3.874474821185132*^9, 3.874474946895976*^9, {3.874475003136775*^9, 
+   3.874475003722117*^9}, {3.8744751079848013`*^9, 3.874475108231656*^9}, {
+   3.874475381348654*^9, 3.8744753848519363`*^9}, {3.87447678074753*^9, 
+   3.874476785958543*^9}, {3.8744772339451723`*^9, 3.874477234207034*^9}, {
+   3.874477759596977*^9, 3.874477764559922*^9}, 3.8744779288600273`*^9, {
+   3.874478000486601*^9, 3.874478018629868*^9}, {3.8744781775268793`*^9, 
+   3.874478181422833*^9}},
+ CellLabel->"In[31]:=",ExpressionUUID->"2ea98fd9-7508-4dd1-83ff-adf61b6b5260"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.874477996589254*^9, 3.8744779974213448`*^9}},
+ CellLabel->"In[32]:=",ExpressionUUID->"23693ac6-e346-4b78-bc82-145eecce36af"],
+
+Cell["You can check connection properties by", "Text",
+ CellChangeTimes->{{3.874467233820416*^9, 3.874467246457829*^9}, {
+  3.874467334225295*^9, 
+  3.87446733583943*^9}},ExpressionUUID->"e412ef00-abc8-4810-a27e-\
+1a6c361aff49"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"connData", " ", "=", " ", 
+   RowBox[{"SQLConnectionInformation", "[", "conn", "]"}]}], ";"}]], "Input",
+ Evaluatable->False,
+ InitializationCell->False,
+ CellChangeTimes->{{3.874466741895226*^9, 3.874466742293619*^9}, {
+   3.8744669608564034`*^9, 3.8744669748774347`*^9}, {3.874468845776379*^9, 
+   3.874468858039805*^9}, 3.874469161458816*^9, {3.8744747822954197`*^9, 
+   3.874474787412559*^9}, {3.874477770913306*^9, 
+   3.874477774760065*^9}},ExpressionUUID->"26f3d724-9e49-410f-834d-\
+c03bd11b8d7d"],
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{"Transpose", "[", "connData", "]"}], "]"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{
+  3.874470056092911*^9},ExpressionUUID->"9beff875-6fba-4ba1-9406-\
+8ff5cde94353"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Check tables and columns", "Subsection",
+ CellChangeTimes->{{3.874467338838777*^9, 
+  3.874467364946987*^9}},ExpressionUUID->"e30332b1-ea49-4df0-8bea-\
+f8532c157b06"],
+
+Cell[BoxData[
+ RowBox[{"SQLTableNames", "[", "conn", "]"}]], "Input",
+ CellLabel->"In[33]:=",ExpressionUUID->"03e98c1b-b3c5-41d7-9007-5d5c2a44e8d0"],
+
+Cell[BoxData[
+ RowBox[{"SQLColumnNames", "[", 
+  RowBox[{"conn", ",", "\"\<AV\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.874466772596005*^9, 3.87446677284765*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"81f4d656-14bf-40ab-8043-b3095f9a79b6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Query data from a table", "Subsection",
+ CellChangeTimes->{{3.874467373226337*^9, 3.8744673831183567`*^9}, {
+  3.87446741766573*^9, 
+  3.874467419280953*^9}},ExpressionUUID->"fc971a52-5cc7-4a27-87a5-\
+9ac4ef30ea76"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"SQLSelect", "[", 
+    RowBox[{"conn", ",", "\"\<AV\>\"", ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<id\>\"", ",", " ", "\"\<name\>\"", ",", " ", "\"\<memo\>\""}], 
+      "}"}], ",", 
+     RowBox[{
+      RowBox[{"SQLColumn", "[", "\"\<rank\>\"", "]"}], " ", "==", " ", "5"}], 
+     ",", "\[IndentingNewLine]", "\t\t", 
+     RowBox[{"\"\<SortingColumns\>\"", "\[Rule]", 
+      RowBox[{"{", " ", 
+       RowBox[{
+        RowBox[{"SQLColumn", "[", "\"\<name\>\"", "]"}], "\[Rule]", 
+        "\"\<Ascending\>\""}], "}"}]}]}], "]"}]}], ";"}]], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.874466786410606*^9, 3.8744668868917227`*^9}, {
+  3.874467498371141*^9, 3.874467544128249*^9}, {3.874468873683712*^9, 
+  3.874468901771805*^9}},
+ CellLabel->"In[35]:=",ExpressionUUID->"a2359721-bc01-418a-9963-ec486f2ac16d"],
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", "data", "]"}]], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{3.874468901772427*^9},
+ CellLabel->"In[36]:=",ExpressionUUID->"bf1db370-09dd-4089-b9fb-7b01658cca57"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "data", "]"}]], "Input",
+ CellChangeTimes->{{3.874466915399756*^9, 3.8744669185553513`*^9}},
+ CellLabel->"In[37]:=",ExpressionUUID->"4c9ebcb2-442d-4773-a3dc-a3e2c2d56f54"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Close the database", "Subsection",
+ CellChangeTimes->{{3.874467393053845*^9, 
+  3.8744673970420303`*^9}},ExpressionUUID->"cfad1ba9-f783-4fd9-a1b9-\
+14e0ee68cdc1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CloseFMPConnection", "[", "conn", "]"}], ";"}]], "Input",
+ CellChangeTimes->{3.874469132932674*^9},
+ CellLabel->"In[38]:=",ExpressionUUID->"fd192529-bf6d-4f7d-a3da-59694b32d648"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+WindowSize->{1075, 930},
+WindowMargins->{{247, Automatic}, {Automatic, 0}},
+ShowCellLabel->True,
+FrontEndVersion->"13.1 for Mac OS X x86 (64-bit) (June 16, 2022)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]]}, Visible -> False, 
+  FrontEndVersion -> "13.1 for Mac OS X x86 (64-bit) (June 16, 2022)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"],
+PrivateNotebookOptions -> {"ColorPalette" -> {RGBColor, 128}},
+RenderingOptions -> {"ObjectDithering" -> True},
+RenderingOptions -> {"RasterDithering" -> False},
+ExpressionUUID->"98580fe4-03b9-4fc8-86ee-976e17b02aa1"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 219, 3, 98, "Title",ExpressionUUID->"1db2fb4b-d0c1-42da-b603-f0ada540a541"],
+Cell[802, 27, 244, 3, 31, "Subsubtitle",ExpressionUUID->"e5f1cfa0-2738-4359-a42a-f23632c160fa"],
+Cell[1049, 32, 233, 6, 35, "Text",ExpressionUUID->"f282cf3c-5529-4d6f-a047-6a0b8c4825d2"],
+Cell[CellGroupData[{
+Cell[1307, 42, 83, 0, 67, "Section",ExpressionUUID->"3c45f271-299e-4e1d-a316-37981148703c"],
+Cell[CellGroupData[{
+Cell[1415, 46, 85, 0, 45, "Subsubsection",ExpressionUUID->"2fec9e34-e0c4-44b5-8901-4e57cb3f4f0b"],
+Cell[1503, 48, 190, 4, 35, "Text",ExpressionUUID->"d4c9a130-8afe-411c-830c-96c04b6dea38"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1730, 57, 86, 0, 37, "Subsubsection",ExpressionUUID->"84ca489c-b4e5-49bc-8fe1-4560f341b183"],
+Cell[1819, 59, 160, 3, 35, "Text",ExpressionUUID->"f5bb71d4-b930-4ef0-81f2-98827556c845"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2016, 67, 87, 0, 37, "Subsubsection",ExpressionUUID->"204e5c6e-867e-4ea5-b609-29e99813f036"],
+Cell[2106, 69, 209, 6, 35, "Text",ExpressionUUID->"13431ab2-a096-43b4-9b1c-ce3bf00c6a64"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2352, 80, 89, 0, 37, "Subsubsection",ExpressionUUID->"c5daf57a-10d3-4263-92c8-fe2d3bf1ff4d"],
+Cell[2444, 82, 428, 10, 81, "Text",ExpressionUUID->"f96e6bc6-46bd-4739-bd0d-072ae47c1cc6"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2909, 97, 96, 0, 37, "Subsubsection",ExpressionUUID->"1df53f59-fcb0-47e8-aab5-523755b288ca"],
+Cell[3008, 99, 74, 0, 35, "Text",ExpressionUUID->"34963ff0-e5c8-4844-b0df-187973afc6fe"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[3119, 104, 152, 4, 37, "Subsubsection",ExpressionUUID->"571ed42c-9ba7-40d3-a826-f67fd047bd7f"],
+Cell[3274, 110, 122, 3, 35, "Text",ExpressionUUID->"eb427278-9c19-4b0e-8d54-37dbca3262ff"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[3433, 118, 87, 0, 37, "Subsubsection",ExpressionUUID->"0b4be3a8-6a89-4e72-8c95-c34bdebc7cca"],
+Cell[3523, 120, 223, 7, 35, "Text",ExpressionUUID->"38a2a4da-d90c-4bed-8d57-1e7d6fbf45c6"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[3783, 132, 88, 0, 37, "Subsubsection",ExpressionUUID->"8b8d05a5-948c-40f5-9b6a-d97b3d7c256c"],
+Cell[3874, 134, 170, 3, 35, "Text",ExpressionUUID->"c9e29426-bbf7-4f31-8b49-7bbf7599d6cc"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[4081, 142, 86, 0, 37, "Subsubsection",ExpressionUUID->"2365f231-4b09-46e9-a704-acae92cdcb54"],
+Cell[4170, 144, 235, 7, 35, "Text",ExpressionUUID->"ebb32696-fbec-4e61-879a-62931698ae45"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[4442, 156, 88, 0, 37, "Subsubsection",ExpressionUUID->"7ad9a9ee-9a26-47a9-8e35-cd1d67b1ca80"],
+Cell[4533, 158, 163, 2, 35, "Text",ExpressionUUID->"fab2dbb7-4af2-4103-aa2e-8ca0a2f2daf9"],
+Cell[4699, 162, 440, 9, 58, "Text",ExpressionUUID->"19aea85f-b8ba-4db5-be8c-dd9ef62f7b3e"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5176, 176, 90, 0, 37, "Subsubsection",ExpressionUUID->"5f6e3680-b7e3-4358-8261-42ac3077e5fe"],
+Cell[5269, 178, 156, 2, 35, "Text",ExpressionUUID->"62f13a41-26a2-40c1-9998-5a8378a893a4"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5462, 185, 90, 0, 37, "Subsubsection",ExpressionUUID->"bef94b33-7340-4c32-9fb5-61744bd4ae2d"],
+Cell[5555, 187, 164, 2, 35, "Text",ExpressionUUID->"0266c93e-769c-48bf-a744-5e6956a8d081"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5756, 194, 92, 0, 37, "Subsubsection",ExpressionUUID->"7986357c-0405-48a9-9049-e94207db60e0"],
+Cell[5851, 196, 253, 6, 31, "Text",ExpressionUUID->"70f584bb-230b-496b-8363-3c090b2b127d"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[6153, 208, 79, 0, 53, "Section",ExpressionUUID->"4e159d34-3157-43a2-8a99-9f2ad2bfd50c"],
+Cell[6235, 210, 240, 4, 58, "Text",ExpressionUUID->"7b8dea05-b7f7-4888-99ef-97921bf980da"],
+Cell[CellGroupData[{
+Cell[6500, 218, 250, 4, 54, "Subsection",ExpressionUUID->"7e7a88c3-1c5f-41bf-a7b6-1846a2692a60"],
+Cell[6753, 224, 299, 9, 35, "Text",ExpressionUUID->"ae4c70d8-0537-483f-8de2-ac0825a881e5"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[7089, 238, 145, 3, 38, "Subsection",ExpressionUUID->"b216b78c-e184-4e26-86d3-0f59d303d40f"],
+Cell[7237, 243, 393, 13, 35, "Text",ExpressionUUID->"99205f5a-ce2e-4a5c-b49f-87f722fb38b5"],
+Cell[7633, 258, 163, 2, 30, "Input",ExpressionUUID->"8bb5ecb5-323c-4701-8daf-5388cdcc3e0b"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[7845, 266, 113, 2, 53, "Section",ExpressionUUID->"0df96cec-11d6-4ed7-ba3f-ddfa38159f2a",
+ InitializationCell->True],
+Cell[7961, 270, 180, 4, 35, "Text",ExpressionUUID->"aa163272-8633-40b2-91cf-428b9709f674",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[8166, 278, 159, 2, 54, "Subsection",ExpressionUUID->"9757f880-a40c-4b2d-9fa9-91ec4bfed96b",
+ InitializationCell->True],
+Cell[8328, 282, 218, 3, 46, "Input",ExpressionUUID->"804dd312-f405-42a3-9a61-0d920f31e6cd",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8583, 290, 179, 4, 54, "Subsection",ExpressionUUID->"e657ee7a-84fa-44fd-a609-0fb7697aa4b7",
+ InitializationCell->True],
+Cell[8765, 296, 299, 6, 46, "Input",ExpressionUUID->"474bad8d-d2c5-47b1-8d1c-5403e0dfed88",
+ InitializationCell->True],
+Cell[9067, 304, 570, 11, 64, "Input",ExpressionUUID->"64eb17f5-6f85-4eec-a6f0-4e06b69b4ef2",
+ InitializationCell->True],
+Cell[9640, 317, 320, 6, 46, "Input",ExpressionUUID->"b142abcd-f718-4003-ab9d-d65389d6f52e",
+ InitializationCell->True],
+Cell[9963, 325, 354, 7, 46, "Input",ExpressionUUID->"8f330de9-f084-40f4-90e5-30a029a69e37",
+ InitializationCell->True]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[10366, 338, 118, 2, 53, "Section",ExpressionUUID->"feed5f06-01ab-478b-a9ef-222c29df52b9",
+ InitializationCell->True],
+Cell[10487, 342, 186, 3, 35, "Text",ExpressionUUID->"5217f3da-a713-421f-8b85-56816fc08eff"],
+Cell[CellGroupData[{
+Cell[10698, 349, 154, 2, 54, "Subsection",ExpressionUUID->"f587ca75-8600-4b08-a0cd-11f9e933333a",
+ InitializationCell->True],
+Cell[10855, 353, 143, 2, 46, "Input",ExpressionUUID->"5ca275bc-b541-418e-94cb-f57410362eb7",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11035, 360, 180, 4, 54, "Subsection",ExpressionUUID->"d7838797-4c43-477b-a212-71606f25eafc",
+ InitializationCell->True],
+Cell[11218, 366, 259, 5, 46, "Input",ExpressionUUID->"3f946233-2e36-4649-bff2-b1a80d2c1500",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11514, 376, 143, 2, 54, "Subsection",ExpressionUUID->"96d3d5f0-244c-4993-83fb-5d2d290af60b",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[11682, 382, 202, 4, 37, "Subsubsection",ExpressionUUID->"1b8b99dc-99b7-4591-96d9-8e1018209174",
+ InitializationCell->True],
+Cell[11887, 388, 768, 14, 52, "Code",ExpressionUUID->"f343e745-d7e7-44bb-a37f-8b862ca367de"],
+Cell[12658, 404, 2697, 41, 172, "Input",ExpressionUUID->"593dc382-93fe-4c2d-ad70-25740af7864b",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15392, 450, 205, 4, 37, "Subsubsection",ExpressionUUID->"aa9e06ed-b50b-4d9d-81b3-057b93ef6906",
+ InitializationCell->True],
+Cell[15600, 456, 270, 4, 46, "Input",ExpressionUUID->"3fe4e7da-9129-481c-abe4-4deef2bdfa67",
+ InitializationCell->True]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15919, 466, 143, 2, 54, "Subsection",ExpressionUUID->"8224d971-d6f8-4ca4-bc2d-7090a3e98961",
+ InitializationCell->True],
+Cell[16065, 470, 153, 2, 46, "Input",ExpressionUUID->"2b1e9f22-9348-455d-99f5-cd99de6a6554",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16255, 477, 130, 2, 54, "Subsection",ExpressionUUID->"d44b2fe1-17ea-4bd6-95b2-eab078bb191b",
+ InitializationCell->True],
+Cell[16388, 481, 129, 2, 46, "Input",ExpressionUUID->"b9c13721-803e-48f7-9566-1698144a5e67",
+ InitializationCell->True]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[16566, 489, 110, 2, 53, "Section",ExpressionUUID->"8c218c59-5299-48ce-8b1a-b883a28220cd",
+ InitializationCell->True],
+Cell[16679, 493, 131, 0, 35, "Text",ExpressionUUID->"eca8b8da-2133-45be-946d-37bc738188d7"],
+Cell[CellGroupData[{
+Cell[16835, 497, 130, 2, 54, "Subsection",ExpressionUUID->"4e795261-3376-47d4-8d83-3baa2c423be8",
+ InitializationCell->True],
+Cell[16968, 501, 283, 7, 46, "Input",ExpressionUUID->"a853b015-0a74-48c6-b954-4b6b8df4f77f",
+ InitializationCell->True],
+Cell[17254, 510, 142, 2, 35, "Text",ExpressionUUID->"5059bf0d-be9d-4745-9371-70af9d342cb2",
+ InitializationCell->True],
+Cell[17399, 514, 159, 3, 30, "Input",ExpressionUUID->"f422228b-1fa7-462a-b9bc-cfa0a29f5efa",
+ Evaluatable->False,
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17595, 522, 130, 2, 54, "Subsection",ExpressionUUID->"cb2e0497-2f7c-4aea-bcce-7c2b4f1cf730",
+ InitializationCell->True],
+Cell[17728, 526, 136, 2, 46, "Input",ExpressionUUID->"4aacbd4d-7d57-422d-8807-b0042094024a",
+ InitializationCell->True]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[17913, 534, 89, 0, 53, "Section",ExpressionUUID->"3519a4af-1495-409f-b317-ce2c386f5f88"],
+Cell[18005, 536, 172, 3, 35, "Text",ExpressionUUID->"2635e9b9-d50b-4b3b-979e-9677d5853e46"],
+Cell[CellGroupData[{
+Cell[18202, 543, 169, 3, 54, "Subsection",ExpressionUUID->"b23564a7-30ff-446b-b6cf-9501c4390d15"],
+Cell[18374, 548, 221, 3, 30, "Input",ExpressionUUID->"548968fe-d00b-4ff4-b4d9-0c33cfa28b3c"],
+Cell[18598, 553, 1300, 20, 30, "Input",ExpressionUUID->"2ea98fd9-7508-4dd1-83ff-adf61b6b5260"],
+Cell[19901, 575, 173, 2, 30, "Input",ExpressionUUID->"23693ac6-e346-4b78-bc82-145eecce36af"],
+Cell[20077, 579, 228, 4, 35, "Text",ExpressionUUID->"e412ef00-abc8-4810-a27e-1a6c361aff49"],
+Cell[20308, 585, 539, 11, 30, "Input",ExpressionUUID->"26f3d724-9e49-410f-834d-c03bd11b8d7d",
+ Evaluatable->False,
+ InitializationCell->False],
+Cell[20850, 598, 228, 6, 30, "Input",ExpressionUUID->"9beff875-6fba-4ba1-9406-8ff5cde94353",
+ Evaluatable->False]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21115, 609, 172, 3, 54, "Subsection",ExpressionUUID->"e30332b1-ea49-4df0-8bea-f8532c157b06"],
+Cell[21290, 614, 148, 2, 30, "Input",ExpressionUUID->"03e98c1b-b3c5-41d7-9007-5d5c2a44e8d0"],
+Cell[21441, 618, 246, 4, 30, "Input",ExpressionUUID->"81f4d656-14bf-40ab-8043-b3095f9a79b6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21724, 627, 221, 4, 54, "Subsection",ExpressionUUID->"fc971a52-5cc7-4a27-87a5-9ac4ef30ea76"],
+Cell[CellGroupData[{
+Cell[21970, 635, 914, 21, 52, "Input",ExpressionUUID->"a2359721-bc01-418a-9963-ec486f2ac16d",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[22887, 658, 241, 4, 30, "Input",ExpressionUUID->"bf1db370-09dd-4089-b9fb-7b01658cca57",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}]
+}, Open  ]],
+Cell[23143, 665, 209, 3, 30, "Input",ExpressionUUID->"4c9ebcb2-442d-4773-a3dc-a3e2c2d56f54"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23389, 673, 168, 3, 54, "Subsection",ExpressionUUID->"cfad1ba9-f783-4fd9-a1b9-14e0ee68cdc1"],
+Cell[23560, 678, 213, 4, 30, "Input",ExpressionUUID->"fd192529-bf6d-4f7d-a3da-59694b32d648"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

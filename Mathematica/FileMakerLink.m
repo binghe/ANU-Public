@@ -28,15 +28,16 @@ FileMakerLink::usage = "FileMakerLink.m is a package for connecting to FileMaker
 
 
 (* ::Input::Initialization:: *)
-OpenFMPConnection::usage = "Open a connection to a (local) FileMaker Pro database."
+OpenFMPConnection::usage =
+  "OpenFMPConnection[dbname, opts ...] opens a connection to a (local) FileMaker Pro database."
 
 
 (* ::Input::Initialization:: *)
-CloseFMPConnection::usage = "Close the FileMaker Pro database connection."
+Hostname::usage = "Hostname is an option of OpenFMPConnection[]"
 
 
 (* ::Input::Initialization:: *)
-FileMakerLink::bad_connection = "Bad connection to FileMaker Pro database!"
+CloseFMPConnection::usage = "CloseFMPConnection[conn] closes the FileMaker Pro database connection."
 
 
 (* ::Input::Initialization:: *)
@@ -44,15 +45,29 @@ Begin["`Private`"]
 
 
 (* ::Input::Initialization:: *)
-OpenFMPConnection[db_, user_, pass_] :=
-    OpenSQLConnection[JDBC["com.filemaker.jdbc.Driver", "jdbc:filemaker://localhost/" <> db],
-					  "Name" -> "FMP"(* this is fixed for FileMaker Pro *),
-					  "Username" -> user,
-					  "Password" -> pass];
+protected = Unprotect[ OpenFMPConnection, CloseFMPConnection ]
+
+
+Options[OpenFMPConnection] = Append[Options[OpenSQLConnection],Hostname -> "localhost"]
 
 
 (* ::Input::Initialization:: *)
-CloseFMPConnection[conn_] := CloseSQLConnection[conn];
+OpenFMPConnection[ dbname_, opts : OptionsPattern[] ] :=
+	Module[{hostname, jdbcURL, sqlOpts},
+		hostname = OptionValue[Hostname];
+		jdbcURL = "jdbc:filemaker://" <> hostname <> "/" <> dbname;
+		sqlOpts = Append[FilterRules[{opts}, Options[OpenSQLConnection]],
+					     "Name" -> "FMP"];
+		OpenSQLConnection[JDBC["com.filemaker.jdbc.Driver", jdbcURL], sqlOpts]
+	]
+
+
+(* ::Input::Initialization:: *)
+CloseFMPConnection[conn_] := CloseSQLConnection[conn]
+
+
+(* ::Input::Initialization:: *)
+Protect[ Evaluate[protected] ]
 
 
 (* ::Input::Initialization:: *)
