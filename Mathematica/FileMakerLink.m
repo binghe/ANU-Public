@@ -48,18 +48,17 @@ Begin["`Private`"]
 protected = Unprotect[ OpenFMPConnection, CloseFMPConnection ]
 
 
-Options[OpenFMPConnection] = Append[Options[OpenSQLConnection],Hostname -> "localhost"]
+Options[OpenFMPConnection] = Flatten[{Hostname -> "localhost",
+							        Options[OpenSQLConnection]}]
 
 
 (* ::Input::Initialization:: *)
 OpenFMPConnection[ dbname_, opts : OptionsPattern[] ] :=
-	Module[{hostname, jdbcURL, sqlOpts},
-		hostname = OptionValue[Hostname];
-		jdbcURL = "jdbc:filemaker://" <> hostname <> "/" <> dbname;
-		sqlOpts = Append[FilterRules[{opts}, Options[OpenSQLConnection]],
-					     "Name" -> "FMP"]; (* fixed name required by FM JDBC *)
-		OpenSQLConnection[JDBC["com.filemaker.jdbc.Driver", jdbcURL], sqlOpts]
-	]
+	With[{URL = "jdbc:filemaker://" <> OptionValue[Hostname] <> "/" <> dbname,
+		  password = If[OptionValue[Password] == None, "", OptionValue[Password]],
+	      connOpts = FilterRules[{opts}, Options[OpenSQLConnection]]},
+		 SetOptions[OpenSQLConnection, Name -> "FMP", Password -> password];
+		 OpenSQLConnection[JDBC["com.filemaker.jdbc.Driver", URL], connOpts]]
 
 
 (* ::Input::Initialization:: *)
