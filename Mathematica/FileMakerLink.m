@@ -57,7 +57,7 @@ OpenFMPConnection[ dbname_, opts : OptionsPattern[] ] :=
 		hostname = OptionValue[Hostname];
 		jdbcURL = "jdbc:filemaker://" <> hostname <> "/" <> dbname;
 		sqlOpts = Append[FilterRules[{opts}, Options[OpenSQLConnection]],
-					     "Name" -> "FMP"];
+					     "Name" -> "FMP"]; (* fixed name required by FM JDBC *)
 		OpenSQLConnection[JDBC["com.filemaker.jdbc.Driver", jdbcURL], sqlOpts]
 	]
 
