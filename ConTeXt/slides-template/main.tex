@@ -8,7 +8,7 @@
 \input shared
 
 \setupTitle
-  [ title={Some HOL Theorems},
+  [ title={Some HOL Theorems (demo)},
    author={Chun TIAN\\{\tt chun.tian@anu.edu.au}},
      date={20/03/2024} ]
 
@@ -17,10 +17,17 @@
 \placeTitle
 
 % BEGIN slides
-\SlideTitle {Probability Theorems}
+\SlideTitle {Some Important Theorems}
 
+Carath\'{e}odory's Extension Theorem (semi-ring version):
 \startholtex
-[SLLN_IID]
+[measureTheory.CARATHEODORY_SEMIRING]
+\HOLthm{measure.CARATHEODORY_SEMIRING}
+\stopholtex
+
+The Strong Law of Large Numbers (SLLN) for IID r.v.'s:
+\startholtex
+[large_numberTheory.SLLN_IID]
 \HOLthm{large_number.SLLN_IID}
 \stopholtex
 
