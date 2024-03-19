@@ -5,11 +5,15 @@ HOLHEAP = $(HOLDIR)/examples/probability/heap
 
 EXTRA_CLEANS = heap munge.exe
 
-all: $(DEFAULT_TARGETS) munge.exe
+all: $(DEFAULT_TARGETS) munge.exe main.pdf
 
 MUNGE_DEPS = local
 
 munge.exe: $(patsubst %,%Theory.uo,$(MUNGE_DEPS))
 	$(HOLDIR)/bin/mkmunge.exe $(patsubst %,%Theory,$(MUNGE_DEPS))
+
+# you may need to call "mtxrun --generate" once to use ConTeXt
+main.pdf: main.tex shared.tex munge.exe
+	context main
 
 .PHONY: all
