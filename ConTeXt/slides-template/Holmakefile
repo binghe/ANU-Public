@@ -1,0 +1,15 @@
+INCDIRS = src/probability examples/probability
+INCLUDES = $(patsubst %,$(dprot $(HOLDIR)/%),$(INCDIRS))
+
+HOLHEAP = $(HOLDIR)/examples/probability/heap
+
+EXTRA_CLEANS = heap munge.exe
+
+all: $(DEFAULT_TARGETS) munge.exe
+
+MUNGE_DEPS = local
+
+munge.exe: $(patsubst %,%Theory.uo,$(MUNGE_DEPS))
+	$(HOLDIR)/bin/mkmunge.exe $(patsubst %,%Theory,$(MUNGE_DEPS))
+
+.PHONY: all

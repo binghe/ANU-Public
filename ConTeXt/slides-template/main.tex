@@ -1,0 +1,28 @@
+% -*- Mode: ConTeXt -*-
+% !TEX TS-program = ConTeXt-TL
+% !TEX useConTeXtSyncParser
+%
+% This is required by TeXshop
+\setupsynctex[state=start,method=min]
+
+\input shared
+
+\setupTitle
+  [ title={Some HOL Theorems},
+   author={Chun TIAN\\{\tt chun.tian@anu.edu.au}},
+     date={20/03/2024} ]
+
+% BEGIN document
+\starttext
+\placeTitle
+
+% BEGIN slides
+\SlideTitle {Probability Theorems}
+
+\startholtex
+[SLLN_IID]
+\HOLthm{large_number.SLLN_IID}
+\stopholtex
+
+% END document
+\stoptext
