@@ -1,6 +1,8 @@
 INCDIRS = src/probability examples/probability
 INCLUDES = $(patsubst %,$(dprot $(HOLDIR)/%),$(INCDIRS))
 
+CLINE_OPTIONS = -j1
+
 HOLHEAP = $(HOLDIR)/examples/probability/heap
 
 EXTRA_CLEANS = heap munge.exe
