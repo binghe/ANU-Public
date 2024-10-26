@@ -1,0 +1,35 @@
+% -*- Mode: ConTeXt -*-
+% !TEX TS-program = ConTeXt-TL
+% !TEX useConTeXtSyncParser
+%
+% This is required by TeXshop
+\setupsynctex[state=start,method=min]
+
+\input shared
+
+\setupTitle
+  [ title={Some HOL Theorems (demo)},
+   author={Chun TIAN\\{\tt chun.tian@anu.edu.au}},
+     date={20/03/2024} ]
+
+% BEGIN document
+\starttext
+\placeTitle
+
+% BEGIN slides
+\SlideTitle {Some Important Theorems}
+
+Carath\'{e}odory's Extension Theorem (semi-ring version):
+\startholtex
+[measureTheory.CARATHEODORY_SEMIRING]
+\HOLthm{measure.CARATHEODORY_SEMIRING}
+\stopholtex
+
+The Strong Law of Large Numbers (SLLN) for IID r.v.'s:
+\startholtex
+[large_numberTheory.SLLN_IID]
+\HOLthm{large_number.SLLN_IID}
+\stopholtex
+
+% END document
+\stoptext

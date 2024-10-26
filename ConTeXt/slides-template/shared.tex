@@ -1,0 +1,95 @@
+%%%% -*- Mode: ConTeXt -*-
+% !TEX TS-program = ConTeXt2023
+% !TEX useConTeXtSyncParser
+
+\usemodule[simpleslides]
+          [style=Swoosh,
+           font=LatinModernSans]
+
+\setuplayout[width=middle,topspace=0pt,height=middle,bottom=0pt]
+
+% The following commands can be used to change slides dimensions
+%\definepapersize[foo][width=720pt,height=480pt]
+%\setuppapersize[foo]
+
+%% BEGIN bussproofs(-extra)
+\usemodule[filter]
+
+\defineexternalfilter
+   [prooftree]
+   [filter=pdflatex,
+    cache=yes,
+    output=\externalfilterbasefile.pdf,
+    readcommand=\readPDFfile,
+   ]
+
+\def\readPDFfile#1{\externalfigure[#1]}
+
+\startbuffer[prooftree::before]
+  \documentclass[12pt]{article}
+  \usepackage{bussproofs}
+  \usepackage[active,tightpage]{preview}
+
+  \begin{document}
+  \Large
+  \begin{preview}
+  \begin{prooftree}
+\stopbuffer
+
+\startbuffer[prooftree::after]
+  \end{prooftree}
+  \end{preview}
+  \end{document}
+\stopbuffer
+
+\setupexternalfilter
+  [prooftree]
+  [bufferbefore={prooftree::before},
+   bufferafter={prooftree::after}]
+%% END bussproofs(-extra)
+
+%% BEGIN holtex
+\defineexternalfilter
+   [holtex]
+   [filtercommand={./run_munge.sh \externalfilterinputfile\space\externalfilterbasefile},
+    cache=yes,
+    output=\externalfilterbasefile.pdf,
+    readcommand=\readPDFfile,
+    spacebefore=big,
+    spaceafter=big,
+   ]
+
+\startbuffer[holtex::before]
+  \documentclass[12pt]{article}
+  \usepackage[active,tightpage]{preview}
+  \usepackage{holtex}
+  \usepackage{alltt}
+  \usepackage{proof}
+  \begin{document}
+  \begin{preview}
+  \begin{alltt}
+\stopbuffer
+
+\startbuffer[holtex::after]
+  \end{alltt}
+  \end{preview}
+  \end{document}
+\stopbuffer
+
+\setupexternalfilter
+  [holtex]
+  [bufferbefore={holtex::before},
+   bufferafter={holtex::after}]
+%% END holtex
+
+%% BEGIN custom item symbol
+%% (usage: \startitemize[10])
+\startuseMPgraphic{foo}
+path p;
+p := fullsquare scaled 8pt randomized 1pt;
+draw p withpen pencircle scaled 2pt
+withcolor darkred;
+\stopuseMPgraphic
+
+\definesymbol[10][{\lower.2ex\hbox{\useMPgraphic{foo}}}]
+%% END custom item symbol
